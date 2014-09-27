@@ -95,17 +95,27 @@
         <!--Which sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
-                <ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterContentType" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterAdvisor" />
+                <ref bean="searchFilterThesisSemester" />
+                <ref bean="searchFilterDiscipline" />
+                <ref bean="searchFilterThesisDegreeLevel" />
             </list>
         </property>
         <!--The search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
+                <ref bean="searchFilterContentType" />
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterAdvisor" />
+                <ref bean="searchFilterThesisSemester" />
+                <ref bean="searchFilterDiscipline" />
+                <ref bean="searchFilterThesisDegreeLevel" />
                 <ref bean="searchFilterIssued" />
             </list>
         </property>
@@ -119,6 +129,7 @@
                     <list>
                         <ref bean="sortTitle" />
                         <ref bean="sortDateIssued" />
+                        <ref bean="sortDateSubmitted" />
                     </list>
                 </property>
             </bean>
@@ -198,9 +209,14 @@
         <!--Which sidebar facets are to be displayed (same as defaultConfiguration above)-->
         <property name="sidebarFacets">
             <list>
-                <ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterContentType" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterAdvisor" />
+                <ref bean="searchFilterThesisSemester" />
+                <ref bean="searchFilterDiscipline" />
+                <ref bean="searchFilterThesisDegreeLevel" />
             </list>
         </property>
         <!--The search filters which can be used on the discovery search page (same as defaultConfiguration above)-->
@@ -209,8 +225,13 @@
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterContentType" />
                 <ref bean="searchFilterIssued" />
-            </list>
+                <ref bean="searchFilterAdvisor" />
+                <ref bean="searchFilterThesisSemester" />
+                <ref bean="searchFilterDiscipline" />
+                <ref bean="searchFilterThesisDegreeLevel" />
+           </list>
         </property>
         <!--The sort filters for the discovery search (same as defaultConfiguration above)-->
         <property name="searchSortConfiguration">
@@ -222,6 +243,7 @@
                     <list>
                         <ref bean="sortTitle" />
                         <ref bean="sortDateIssued" />
+                        <ref bean="sortDateSubmitted" />
                     </list>
                 </property>
             </bean>
@@ -280,10 +302,70 @@
         <property name="metadataFields">
             <list>
                 <value>dc.contributor.author</value>
-                <value>dc.creator</value>
+                <value>dc.contributor.corporatename</value>
+                <value>dc.contributor.editor</value>
+                <value>dc.contributor.meetingname</value>
+                <value>dc.contributor.illustrator</value>
             </list>
         </property>
-        <property name="facetLimit" value="10"/>
+        <property name="facetLimit" value="5"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+
+    <bean id="searchFilterContentType" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="contentType"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.type</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+
+    <bean id="searchFilterAdvisor" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="advisor"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.contributor.advisor</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+
+    <bean id="searchFilterThesisSemester" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="thesisSemester"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.date.submitted</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5"/>
+        <property name="type" value="date"/>
+        <property name="sortOrder" value="VALUE"/>
+    </bean>
+
+    <bean id="searchFilterDiscipline" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="discipline"/>
+        <property name="metadataFields">
+            <list>
+                <value>thesis.degree.discipline</value>
+                <value>dc.subject.discipline</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+
+    <bean id="searchFilterThesisDegreeLevel" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="thesisDegreeLevel"/>
+        <property name="metadataFields">
+            <list>
+                <value>thesis.degree.level</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5"/>
         <property name="sortOrder" value="COUNT"/>
     </bean>
 
@@ -291,10 +373,13 @@
         <property name="indexFieldName" value="subject"/>
         <property name="metadataFields">
             <list>
-                <value>dc.subject.*</value>
+                <value>dc.subject.lcsh</value>
+                <value>dc.subject.mesh</value>
+                <value>dc.subject.spatial</value>
+                <value>dc.subject.temporal</value>
             </list>
         </property>
-        <property name="facetLimit" value="10"/>
+        <property name="facetLimit" value="5"/>
         <property name="sortOrder" value="COUNT"/>
         <property name="splitter" value="::"/>
     </bean>
@@ -306,6 +391,7 @@
                 <value>dc.date.issued</value>
             </list>
         </property>
+        <property name="facetLimit" value="5"/>
         <property name="type" value="date"/>
         <property name="sortOrder" value="VALUE"/>
     </bean>
@@ -319,5 +405,11 @@
         <property name="metadataField" value="dc.date.issued"/>
         <property name="type" value="date"/>
     </bean>
-    
+ 
+    <bean id="sortDateSubmitted" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
+        <property name="metadataField" value="dc.date.submitted"/>
+        <property name="type" value="date"/>
+    </bean>
+
+   
 </beans>
