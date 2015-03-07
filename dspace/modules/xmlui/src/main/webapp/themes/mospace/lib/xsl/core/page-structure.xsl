@@ -285,10 +285,7 @@
             <xsl:variable name="page_title" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='title']" />
             <title>
                 <xsl:choose>
-                        <xsl:when test="starts-with($request-uri, 'page/about')">
-                                <xsl:text>About This Repository</xsl:text>
-                        </xsl:when>
-                        <xsl:when test="not($page_title)">
+                       <xsl:when test="not($page_title)">
                             <i18n:text>xmlui.dri2xhtml.METS-1.0.no-title</i18n:text>
                         </xsl:when>
                         <xsl:when test="$page_title = ''">
@@ -563,6 +560,20 @@
 
     <!-- Like the header, the footer contains various miscellaneous text, links, and image placeholders -->
     <xsl:template name="buildFooter">
+
+        <!-- MOspace navigation bar and tag line, absolutely positioned, code goes here because it isn't semantically important -->
+        <xsl:variable name="app_path" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]" />
+
+        <div id="ms-navigation">
+            <ul id="ms-navigation-list">
+                <li class="ms-navigation-link"><a href="{$app_path}/discover">search</a> | </li>
+                <li class="ms-navigation-link"><a href="{$app_path}/community-list">browse</a> | </li>
+                <li class="ms-navigation-link"><a href="{$app_path}/pages/add">add to MOspace</a> | </li>
+                <li class="ms-navigation-link"><a href="{$app_path}/pages/about">about</a> | </li>
+                <li class="ms-navigation-link"><a href="{$app_path}/pages/help">help</a></li>
+            </ul>
+        </div>
+
         <div id="ds-footer-wrapper">
             <div id="ds-footer">
                 <div id="ds-footer-left">
@@ -599,6 +610,7 @@
                 </a>
             </div>
         </div>
+
     </xsl:template>
 
 
