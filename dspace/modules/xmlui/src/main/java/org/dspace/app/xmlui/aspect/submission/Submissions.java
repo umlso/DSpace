@@ -37,6 +37,7 @@ import org.dspace.content.WorkspaceItem;
 import org.dspace.core.Constants;
 import org.dspace.eperson.EPerson;
 import org.xml.sax.SAXException;
+import org.dspace.authorize.AuthorizeManager;
 
 /**
  * @author Scott Phillips
@@ -171,7 +172,13 @@ public class Submissions extends AbstractDSpaceTransformer
     	SupervisedItem[] supervisedItems = SupervisedItem.findbyEPerson(context, context.getCurrentUser());
 
         // RE LSO #1386, if this user is an admin, show the start submission link, otherwise skip it
-        if (unfinishedItems.length <= 0 && supervisedItems.length <= 0)
+        // by default assume we are not authorized
+        boolean authorized = false;
+
+        //Check for admin
+        authorized = AuthorizeManager.isAdmin(context);
+
+        if (authorized && unfinishedItems.length <= 0 && supervisedItems.length <= 0)
     	{
             Collection[] collections = Collection.findAuthorizedOptimized(context, Constants.ADD);
 
@@ -187,13 +194,15 @@ public class Submissions extends AbstractDSpaceTransformer
                 return;
             }
     	}
-
-    	Division unfinished = division.addDivision("unfinished-submisions");
-    	unfinished.setHead(T_s_head2);
-    	Para p = unfinished.addPara();
-    	p.addContent(T_s_info2a);
-    	p.addHighlight("bold").addXref(contextPath+"/submit",T_s_info2b);
-    	p.addContent(T_s_info2c);
+        Division unfinished = division.addDivision("unfinished-submisions");
+        if (authorized)
+        {
+            unfinished.setHead(T_s_head2);
+            Para p = unfinished.addPara();
+            p.addContent(T_s_info2a);
+            p.addHighlight("bold").addXref(contextPath+"/submit",T_s_info2b);
+            p.addContent(T_s_info2c);
+        }
 
     	// Calculate the number of rows.
     	// Each list pluss the top header and bottom row for the button.

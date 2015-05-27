@@ -100,13 +100,13 @@
 	<message key="xmlui.ArtifactBrowser.AbstractSearch.all_of_dspace">All of MOspace</message>
 
    <message key="xmlui.ArtifactBrowser.AbstractSearch.sort_by.title">title</message>
-   <message key="xmlui.ArtifactBrowser.AbstractSearch.sort_by.dateissued">issue date</message>
+   <message key="xmlui.ArtifactBrowser.AbstractSearch.sort_by.dateissued">date issued</message>
    <message key="xmlui.ArtifactBrowser.AbstractSearch.sort_by.dateaccessioned">submit date</message>
 	<message key="xmlui.ArtifactBrowser.AbstractSearch.sort_by.relevance">relevance</message>
 	<message key="xmlui.ArtifactBrowser.AbstractSearch.sort_by">Sort items by</message>
 	<message key="xmlui.ArtifactBrowser.AbstractSearch.order">in order</message>
-	<message key="xmlui.ArtifactBrowser.AbstractSearch.order.asc">ascending</message>
-	<message key="xmlui.ArtifactBrowser.AbstractSearch.order.desc">descending</message>
+	<message key="xmlui.ArtifactBrowser.AbstractSearch.order.asc">ascending (A-Z)</message>
+	<message key="xmlui.ArtifactBrowser.AbstractSearch.order.desc">descending (Z-A)</message>
 	<message key="xmlui.ArtifactBrowser.AbstractSearch.rpp">Results/page</message>
 
     <!-- org.dspace.app.xmlui.artifactbrowser.AdvancedSearch.java -->
@@ -121,7 +121,7 @@
 	<message key="xmlui.ArtifactBrowser.AdvancedSearch.type_author">Author</message>
 	<message key="xmlui.ArtifactBrowser.AdvancedSearch.type_advisor">Advisor</message>
 	<message key="xmlui.ArtifactBrowser.AdvancedSearch.type_thesisSemester">Thesis Semester</message>
-	<message key="xmlui.ArtifactBrowser.AdvancedSearch.type_discipline">Thesis Discipline</message>
+	<message key="xmlui.ArtifactBrowser.AdvancedSearch.type_discipline">Thesis Department</message>
 	<message key="xmlui.ArtifactBrowser.AdvancedSearch.type_thesisDegreeLevel">Thesis Degree Level</message>
 	<message key="xmlui.ArtifactBrowser.AdvancedSearch.type_contentType">Content Type</message>
 	<message key="xmlui.ArtifactBrowser.AdvancedSearch.type_title">Title</message>
@@ -144,7 +144,7 @@
    <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_department">Department</message>
    <message key="xmlui.Discovery.AbstractdSearch.type_thesisSemester">Thesis Semester</message>
    <message key="xmlui.Discovery.AbstractSearch.type_advisor">Advisor</message>
-   <message key="xmlui.Discovery.AbstractSearch.type_discipline">Thesis Discipline</message>
+   <message key="xmlui.Discovery.AbstractSearch.type_discipline">Thesis Department</message>
    <message key="xmlui.Discovery.AbstractSearch.type_thesisDegreeLevel">Thesis Degree Level</message>
 
 
@@ -171,17 +171,41 @@
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.etal.all">All</message>
 
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.sort_by.title">title</message>
-	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.sort_by.dateissued">issue date</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.sort_by.dateissued">date issued</message>
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.sort_by.dateaccessioned">submit date</message>
 
-	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.order.asc">ascending</message>
-	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.order.desc">descending</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.order.asc">ascending (A-Z)</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.order.desc">descending (Z-A)</message>
 
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.author.column_heading">Authors Name</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.dateissued.column_heading">Date Issued</message>
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.subject.column_heading">Subject</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.discipline.column_heading">Theses Department</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.semester.column_heading">Theses Semester</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.advisor.column_heading">Theses Advisor</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.authorcontributor.column_heading">Author/Contriubtor</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.identifier.column_heading">Identifier</message>
 
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.metadata.author">Browsing {0} by Author {1}</message>
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.trail.metadata.author">Browsing {0} by Author</message>
+
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.metadata.dateissued">Browsing {0} by Date Issued {1}</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.trail.metadata.dateissued">Browsing {0} by Date Issued</message>
+
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.metadata.discipline">Browsing {0} by Theses Department {1}</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.trail.metadata.discipline">Browsing {0} by Theses Department</message>
+
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.metadata.semester">Browsing {0} by Theses Semester {1}</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.trail.metadata.semester">Browsing {0} by Theses Semester</message>
+
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.metadata.advisor">Browsing {0} by Theses Advisor {1}</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.trail.metadata.advisor">Browsing {0} by Theses Advisor</message>
+
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.metadata.identifier">Browsing {0} by Identifier {1}</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.trail.metadata.identifier">Browsing {0} by Identifier</message>
+
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.metadata.authorcontributor">Browsing {0} by Author/Contributor {1}</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.trail.metadata.authorcontributor">Browsing {0} by Author/Contributor</message>
 
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.metadata.subject">Browsing {0} by Subject {1}</message>
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.trail.metadata.subject">Browsing {0} by Subject</message>
@@ -189,8 +213,8 @@
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.item.title">Browsing {0} by Title {1}</message>
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.trail.item.title">Browsing {0} by Title</message>
 
-	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.item.dateissued">Browsing {0} by Issue Date {1}</message>
-	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.trail.item.dateissued">Browsing {0} by Issue Date</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.item.dateissued">Browsing {0} by Date Issued {1}</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.trail.item.dateissued">Browsing {0} by Date Issued</message>
 
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.item.dateaccessioned">Browsing {0} by Submit Date {1}</message>
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.trail.item.dateaccessioned">Browsing {0} by Submit Date</message>
@@ -255,8 +279,8 @@
 	<!-- org.dspace.app.xmlui.artifactbrowser.ItemViewer.java -->
 	<message key="xmlui.ArtifactBrowser.ItemViewer.trail">View Item</message>
 	<message key="xmlui.ArtifactBrowser.ItemViewer.head_parent_collections">This item appears in the following Collection(s)</message>
-	<message key="xmlui.ArtifactBrowser.ItemViewer.show_simple">Show simple item record</message>
-	<message key="xmlui.ArtifactBrowser.ItemViewer.show_full">Show full item record</message>
+	<message key="xmlui.ArtifactBrowser.ItemViewer.show_simple">[-] Show simple item record</message>
+	<message key="xmlui.ArtifactBrowser.ItemViewer.show_full">[+] Show full item record</message>
 
         <message key="xmlui.ArtifactBrowser.ItemViewer.withdrawn">This item has been withdrawn and is no longer available.</message>
 
@@ -267,8 +291,13 @@
 	<message key="xmlui.ArtifactBrowser.Navigation.browse_title">Titles</message>
 	<message key="xmlui.ArtifactBrowser.Navigation.browse_author">Authors</message>
 	<message key="xmlui.ArtifactBrowser.Navigation.browse_subject">Subjects</message>
-	<message key="xmlui.ArtifactBrowser.Navigation.browse_dateissued">By Issue Date</message>
-	<message key="xmlui.ArtifactBrowser.Navigation.browse_dateaccessioned">By Submit Date</message>
+	<message key="xmlui.ArtifactBrowser.Navigation.browse_dateissued">Date Issued</message>
+	<message key="xmlui.ArtifactBrowser.Navigation.browse_dateaccessioned">Submit Date</message>
+	<message key="xmlui.ArtifactBrowser.Navigation.browse_discipline">Theses Department</message>
+	<message key="xmlui.ArtifactBrowser.Navigation.browse_semester">Theses Semester</message>
+	<message key="xmlui.ArtifactBrowser.Navigation.browse_advisor">Theses Advisor</message>
+	<message key="xmlui.ArtifactBrowser.Navigation.browse_authorcontributor">Author/Contributor</message>
+	<message key="xmlui.ArtifactBrowser.Navigation.browse_identifier">Identifier</message>
 	<message key="xmlui.ArtifactBrowser.Navigation.head_this_collection">This Collection</message>
 	<message key="xmlui.ArtifactBrowser.Navigation.head_this_community">This Community</message>
 
@@ -279,7 +308,7 @@
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.search_scope">Search Scope</message>
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.full_text_search">Full Text Search</message>
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.contentType">Content Type</message>
-	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.discipline">Thesis Discipline</message>
+	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.discipline">Thesis Department</message>
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.thesisSemester">Thesis Semester</message>
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.thesisDegreeLevel">Thesis Degree Level</message>
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.advisor">Advisor</message>
@@ -447,7 +476,7 @@
 
 
 	<!-- General keys used by the EPerson aspect -->
-	<message key="xmlui.EPerson.trail_new_registration">New user registration</message>
+	<message key="xmlui.EPerson.trail_new_registration">New user registration for non-UM users</message>
 	<message key="xmlui.EPerson.trail_forgot_password">Forgot Password</message>
 
 	<!-- org.dspace.app.xmlui.eperson.CannotRegister.java -->
@@ -508,7 +537,7 @@
 	<message key="xmlui.EPerson.Navigation.profile">Profile</message>
 	<message key="xmlui.EPerson.Navigation.logout">Logout</message>
 	<message key="xmlui.EPerson.Navigation.login">Login</message>
-	<message key="xmlui.EPerson.Navigation.register">Register</message>
+	<message key="xmlui.EPerson.Navigation.register">Register (non-UM only)</message>
 
 	<!-- org.dspace.app.xmlui.eperson.PasswordLogin.java -->
 	<message key="xmlui.EPerson.PasswordLogin.title">Sign in</message>
@@ -588,13 +617,13 @@
 	<message key="xmlui.EPerson.StartForgotPassword.submit">Send info</message>
 
 	<!-- org.dspace.app.xmlui.eperson.StartRegistration.java -->
-	<message key="xmlui.EPerson.StartRegistration.title">New user registration</message>
+	<message key="xmlui.EPerson.StartRegistration.title">New user registration for non-UM users</message>
 	<message key="xmlui.EPerson.StartRegistration.head1">Email already in use</message>
 	<message key="xmlui.EPerson.StartRegistration.para1">That email address is already in use by another account. If you want to reset the password for this account, click the reset password button below.</message>
 	<message key="xmlui.EPerson.StartRegistration.reset_password_for">Reset password for</message>
 	<message key="xmlui.EPerson.StartRegistration.submit_reset">Reset password</message>
-	<message key="xmlui.EPerson.StartRegistration.head2">New user registration</message>
-	<message key="xmlui.EPerson.StartRegistration.para2">Register an account to subscribe to collections for email updates, and submit new items to MOspace.</message>
+	<message key="xmlui.EPerson.StartRegistration.head2">New user registration for non-UM users</message>
+	<message key="xmlui.EPerson.StartRegistration.para2">Non-UM users may register an account to subscribe to collections for email updates.</message>
 	<message key="xmlui.EPerson.StartRegistration.email_address">Email Address</message>
 	<message key="xmlui.EPerson.StartRegistration.email_address_help">This address will be verified and used as your login name. If your e-mail address is in a UM domain (for example: @umsystem.edu, @missouri.edu, @umkc.edu, etc.), you will not be allowed to register. Use <a href="shibboleth-login">UM Single Sign-on (Shibboleth)</a> instead.</message>
 	<message key="xmlui.EPerson.StartRegistration.error_bad_email">Unable to send email to this address.</message>
@@ -635,8 +664,8 @@
 	<message key="xmlui.Submission.general.workflow.title">Item submission</message>
 	<message key="xmlui.Submission.general.workflow.trail">Item submission</message>
 	<message key="xmlui.Submission.general.workflow.head">Item submission</message>
-	<message key="xmlui.Submission.general.showfull">Show full item record</message>
-	<message key="xmlui.Submission.general.showsimple">Show simple item record</message>
+	<message key="xmlui.Submission.general.showfull">[+] Show full item record</message>
+	<message key="xmlui.Submission.general.showsimple">[-] Show simple item record</message>
 	<message key="xmlui.Submission.general.default.title">Submission</message>
 	<message key="xmlui.Submission.general.default.trail">Submission</message>
 
@@ -2193,7 +2222,7 @@
 	<!-- DS-METS-1.0-QDC.xsl -->
 	<message key="xmlui.dri2xhtml.METS-1.0.no-preview">No preview available</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.no-title">Untitled</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.no-author">Unknown author</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.no-author"></message>
 	<message key="xmlui.dri2xhtml.METS-1.0.non-conformant">
 		This is not a MOspace object conformant to the METS 1.0 profile and as such cannot be
         rendered effectively. You can override either the template that handles the general

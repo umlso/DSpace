@@ -12,7 +12,7 @@
  */
 
 //example mixin to set the text-selection style
-@mixin selection {
+/*@mixin selection {
     ::-moz-selection { @content; }
     ::selection { @content; }
 }
@@ -20,4 +20,86 @@
 @include selection {
     color: white;
     background: hotpink;
+}
+*/
+
+// override DSpace default styling
+
+// links should be underlined all the time
+a {
+	text-decoration: underline;
+}
+
+.navbar {
+    height: 80px;
+}
+
+header .navbar-brand img {
+    height: 60px;
+}
+
+.simple-item-view-description {
+    text-align: left;
+}
+
+h1,h2,h3,h4,h5,h6,h7,h8,h9, .community-browser-row a  {
+    font-family: Georgia,Times,"Times New Roman",serif;
+    font-weight: bold;
+}
+
+.item-page-field-wrapper.table div a {
+     word-wrap: break-word;
+}
+
+.form-control {
+	height: auto;
+}
+
+// yeah, we're not so hot on the whole authority confidence display, let's hide it until it does something meaningful for our users
+img.ds-authority-confidence { display: none;}
+
+// make pagination larger
+
+.pagination {
+	font-size: larger;
+}
+
+// add in specific MOspace styles
+div#ms-tagline {
+    margin: 58px 0px 0px -78px;
+    text-align: left;
+    color: #AAB8C6;
+}
+div#ms-navigation {
+    text-align: right;
+    width: 45%;
+}
+ul#ms-navigation-list li.ms-navigation-link {
+    list-style: none;
+    display: inline;
+    margin-left:0px;
+    color: #fff;
+}
+ul#ms-navigation-list li.ms-navigation-link a:link, ul#ms-navigation-list li.ms-navigation-link a:visited {
+    color: #fff;
+    /*text-decoration: none;*/
+}
+ul#ms-navigation-list li.ms-navigation-link a:hover, ul#ms-navigation-list li.ms-navigation-link a:active {
+    text-decoration: underline;
+    color: #8097A5;
+}
+
+.thumbnail img, .thumbnail a img {
+    margin-left:auto;
+    margin-right:10px;
+}
+
+dt, td.label-cell, .detailtable .label-cell {
+    font-weight: normal;
+}
+
+// let's make the search results a little easier to read with a bit of added white space
+.artifact-title {
+	font-size: 17px;
+	padding-top: 1em;
 }

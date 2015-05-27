@@ -110,6 +110,7 @@
         <!--The search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
+                <ref bean="searchFilterAuthorContributor" />
                 <ref bean="searchFilterContentType" />
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
@@ -119,6 +120,11 @@
                 <ref bean="searchFilterDiscipline" />
                 <ref bean="searchFilterThesisDegreeLevel" />
                 <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterKeyword" />
+                <ref bean="searchFilterSeries" />
+                <ref bean="searchFilterIdentifier" />
+                <ref bean="searchFilterSponsor" />
+                <ref bean="searchFilterAbstract" />
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -154,7 +160,7 @@
             </bean>
         </property>
         <!--Default result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="20" />
         <property name="hitHighlightingConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
                 <property name="metadataFields">
@@ -401,6 +407,8 @@
                 <value>dc.contributor.editor</value>
                 <value>dc.contributor.meetingname</value>
                 <value>dc.contributor.illustrator</value>
+                <value>dc.contributor.illustrator</value>
+                <value>dc.description.statementofresponsibility</value>
             </list>
         </property>
         <property name="facetLimit" value="5"/>
@@ -412,6 +420,26 @@
         <property name="metadataFields">
             <list>
                 <value>dc.type</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+
+    <bean id="searchFilterAuthorContributor" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="authorcontributor"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.contributor</value>
+                <value>dc.contributor.advisor</value>
+                <value>dc.contributor.author</value>
+                <value>dc.contributor.corporatename</value>
+                <value>dc.contributor.editor</value>
+                <value>dc.contributor.illustrator</value>
+                <value>dc.contributor.meetingname</value>
+                <value>dc.contributor.other</value>
+                <value>dc.contributor.sponsor</value>
+                <value>dc.creator</value>
             </list>
         </property>
         <property name="facetLimit" value="5"/>
@@ -490,6 +518,128 @@
         <property name="type" value="date"/>
         <property name="sortOrder" value="VALUE"/>
     </bean>
+
+<bean id="searchFilterKeyword" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="keyword"/>
+        <property name="metadataFields">
+            <list>
+            <value>dc.subject</value>
+			<value>dc.subject.FAST</value>
+			<value>dc.subject.lcsh</value>
+			<value>dc.subject.mesh</value>
+			<value>dc.subject.other</value>
+			<value>dc.creator</value>
+			<value>dc.contributor</value>
+			<value>dc.contributor.advisor</value>
+			<value>dc.contributor.author</value>
+			<value>dc.contributor.committeemember</value>
+			<value>dc.contributor.corporatename</value>
+			<value>dc.contributor.deptlab</value>
+			<value>dc.contributor.editor</value>
+			<value>dc.contributor.facultyauthor</value>
+			<value>dc.contributor.id</value>
+			<value>dc.contributor.illustrator</value>
+			<value>dc.contributor.meetingname</value>
+			<value>dc.contributor.orcid</value>
+			<value>dc.contributor.other</value>
+			<value>dc.contributor.sponsor</value>
+			<value>dc.coverage.spatial</value>
+			<value>dc.coverage.temporal</value>
+			<value>dc.date</value>
+			<value>dc.date.accessioned</value>
+			<value>dc.date.available</value>
+			<value>dc.date.copyright</value>
+			<value>dc.date.created</value>
+			<value>dc.date.issued</value>
+			<value>dc.date.submitted</value>
+			<value>dc.date.updated</value>
+			<value>dc.identifier</value>
+			<value>dc.identifier.issn</value>
+			<value>dc.identifier.merlin</value>
+			<value>dc.identifier.oclc</value>
+			<value>dc.identifier.other</value>
+			<value>dc.identifier.patentappnumber</value>
+			<value>dc.identifier.sici</value>
+			<value>dc.identifier.slug</value>
+			<value>dc.identifier.uri</value>
+			<value>dc.publisher</value>
+			<value>dc.title</value>
+			<value>dc.title.alternative</value>
+			<value>dc.type</value>
+			<value>thesis.degree</value>
+			<value>thesis.degree.name</value>
+			<value>thesis.degree.discipline</value>
+			<value>dc.description.abstract</value>
+			<value>dc.description.digitization</value>
+			<value>dc.description.sponsorship</value>
+			<value>dc.description.statementofresponsibility</value>
+			<value>dc.description.tableofcontents</value>
+			<value>dc.description.uri</value>
+			<value>dc.description.version</value>
+			<value>dc.description</value>
+			<value>marc.990.indexed</value>
+			<value>dc.contributor.faculty</value>
+			<value>dc.relation.ispartofseries</value>
+			<value>dc.relation</value>
+			<value>dc.format</value>
+			<value>dc.format.medium</value>
+			<value>dc.relation.haspart</value>
+			<value>dc.relation.hasversion</value>
+			<value>dc.relation.isbasedon</value>
+			<value>dc.relation.isformatof</value>
+			<value>dc.relation.ispartof</value>
+			<value>dc.relation.isreferencedby</value>
+			<value>dc.relation.isversionof</value>
+			<value>dc.relation.replaces</value>
+			<value>dc.relation.requires</value>
+			<value>dc.subject.discipline</value>
+            </list>
+        </property>
+    </bean>
+
+	<bean id="searchFilterSeries" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+			<property name="indexFieldName" value="series"/>
+			<property name="metadataFields">
+				<list>
+					<value>dc.relation.ispartofseries</value>
+				</list>
+			</property>
+	</bean>
+
+	<bean id="searchFilterIdentifier" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+			<property name="indexFieldName" value="identifier"/>
+			<property name="metadataFields">
+				<list>
+					<value>dc.identifier</value>
+					<value>dc.identifier.issn</value>
+					<value>dc.identifier.merlin</value>
+					<value>dc.identifier.oclc</value>
+					<value>dc.identifier.other</value>
+					<value>dc.identifier.patentappnumber</value>
+					<value>dc.identifier.sici</value>
+					<value>dc.identifier.slug</value>
+					<value>dc.identifier.uri</value>
+				</list>
+			</property>
+	</bean>
+
+	<bean id="searchFilterSponsor" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+			<property name="indexFieldName" value="sponsor"/>
+			<property name="metadataFields">
+				<list>
+					<value>dc.description.sponsorship</value>
+				</list>
+			</property>
+	</bean>
+
+	<bean id="searchFilterAbstract" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+			<property name="indexFieldName" value="abstract"/>
+			<property name="metadataFields">
+				<list>
+					<value>dc.description.tableofcontents</value>
+				</list>
+			</property>
+	</bean>
 
     <!--Sort properties-->
     <bean id="sortTitle" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
