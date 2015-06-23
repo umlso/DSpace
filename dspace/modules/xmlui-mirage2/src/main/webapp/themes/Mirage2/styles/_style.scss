@@ -31,7 +31,7 @@ a {
 }
 
 .navbar {
-    height: 80px;
+    height: 90px;
 }
 
 header .navbar-brand img {
@@ -66,13 +66,16 @@ img.ds-authority-confidence { display: none;}
 
 // add in specific MOspace styles
 div#ms-tagline {
-    margin: 58px 0px 0px -78px;
+    margin: 58px 0px 0px -88px;
+    font-size: 12px;
     text-align: left;
     color: #AAB8C6;
 }
 div#ms-navigation {
+    position: relative;
+    top: -20px;
     text-align: right;
-    width: 45%;
+    width: 100%;
 }
 ul#ms-navigation-list li.ms-navigation-link {
     list-style: none;
