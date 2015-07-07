@@ -115,7 +115,7 @@
     <!-- Generate the logo, if present, from the file section -->
     <xsl:template match="mets:fileGrp[@USE='LOGO']">
         <div class="ds-logo-wrapper">
-            <img src="{mets:file/mets:FLocat[@LOCTYPE='URL']/@xlink:href}" class="logo img-responsive">
+            <img src="{mets:file/mets:FLocat[@LOCTYPE='URL']/@xlink:href}" class="logo img-responsive pull-right" style="margin-top: -130px">
                 <xsl:attribute name="alt">xmlui.dri2xhtml.METS-1.0.collection-logo-alt</xsl:attribute>
                 <xsl:attribute name="attr" namespace="http://apache.org/cocoon/i18n/2.1">alt</xsl:attribute>
             </img>
