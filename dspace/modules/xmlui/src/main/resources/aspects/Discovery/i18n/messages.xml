@@ -33,9 +33,13 @@
     <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_dc.contributor.author_filter">Author</message>
 
     <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_dc.subject_filter">Subject</message>
-    <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_dc.type_filter">Content Type</message>
+    <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_subjectTimePeriod">Subject: Time Period</message>
+    <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_subjectPlace">Subject: Place</message>
+    <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_dc.subject_filter">Subject</message>
+    <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_dc.type_filter">Format</message>
     <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_dc.date.issued">Date Issued</message>
     <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_dateIssued">Date Issued</message>
+    <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_authorcontributor">Author/Contributor</message>
 
 
     <!-- Site Leve Recently Added Content -->
@@ -135,7 +139,7 @@
 
     <message key="xmlui.ArtifactBrowser.SimpleSearch.filter.dateIssued.year">Date Issued</message>
 
-    <message key="xmlui.Discovery.AbstractSearch.type_contentType">Filter by: Content Type</message>
+    <message key="xmlui.Discovery.AbstractSearch.type_contentType">Filter by: Format</message>
     <message key="xmlui.Discovery.AbstractSearch.type_advisor">Filter by: Advisor</message>
     <message key="xmlui.Discovery.AbstractSearch.type_thesisSemester">Filter by: Thesis Semester</message>
     <message key="xmlui.Discovery.AbstractSearch.type_discipline">Filter by: Thesis Department</message>
