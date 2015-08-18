@@ -261,7 +261,7 @@
 
             <xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 9]&gt;
                 &lt;script src="</xsl:text><xsl:value-of select="concat($theme-path, 'vendor/html5shiv/dist/html5shiv.js')"/><xsl:text disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
-                &lt;script src="</xsl:text><xsl:value-of select="concat($theme-path, 'vendor/respond/respond.min.js')"/><xsl:text disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
+                &lt;script src="</xsl:text><xsl:value-of select="concat($theme-path, 'vendor/respond/dest/respond.min.js')"/><xsl:text disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
                 &lt;![endif]--&gt;</xsl:text>
 
             <!-- Modernizr enables HTML5 elements & feature detects -->
@@ -348,7 +348,7 @@
                         <div class="navbar-header pull-right visible-xs hidden-sm hidden-md hidden-lg">
                         <ul class="nav nav-pills pull-left ">
 
-                            <li role="presentation"><a href="{$app_path}/discover">search</a></li>
+                            <li role="presentation"><a href="{$app_path}/discover">advanced<br/>search</a></li>
                             <li role="presentation"><a href="{$app_path}/community-list">browse</a></li>
                             <li role="presentation"><a href="{$app_path}/pages/add">add to MOspace</a></li>
                             <li role="presentation"><a href="{$app_path}/pages/about">about</a></li>
@@ -433,7 +433,7 @@
                             <!-- MOspace navigation bar -->
 
                         <ul class="nav navbar-nav  pull-left">
-                            <li role="presentation"><a href="{$app_path}/discover">search</a></li>
+                            <li role="presentation"><a href="{$app_path}/discover">advanced<br/>search</a></li>
                         </ul>
                         <ul class="nav navbar-nav  pull-left">
                             <li role="presentation"><a href="{$app_path}/community-list">browse</a></li>

@@ -26,7 +26,7 @@
 	<!-- General keys -->
 	<message key="xmlui.general.dspace_home">MOspace Home</message>
 	<message key="xmlui.general.search">Search</message>
-	<message key="xmlui.general.go">Go</message>
+	<message key="xmlui.general.go">Search</message>
 	<message key="xmlui.general.go_home">Go to MOspace home</message>
 	<message key="xmlui.general.save">Save</message>
 	<message key="xmlui.general.cancel">Cancel</message>
@@ -2507,8 +2507,8 @@
 
     <message key="xmlui.mirage2.discovery.reset">Reset</message>
     <message key="xmlui.mirage2.discovery.newFilter">Add New Filter</message>
-    <message key="xmlui.mirage2.discovery.showAdvancedFilters">Show Advanced Filters</message>
-    <message key="xmlui.mirage2.discovery.hideAdvancedFilters">Hide Advanced Filters</message>
+    <message key="xmlui.mirage2.discovery.showAdvancedFilters">[+] Search or Limit by Field</message>
+    <message key="xmlui.mirage2.discovery.hideAdvancedFilters">[-] Search or Limit by Field</message>
 
 
     <message key="xmlui.mirage2.forms.instancedCompositeFields.add">Add</message>
