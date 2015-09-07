@@ -107,6 +107,7 @@ public class DiscoveryUIUtils {
      */
     public static String escapeQueryChars(String query)
     {
+        //return searchService.escapeQueryChars(query);
         return StringUtils.replace(query, ": ", "\\: ");
     }
 }
