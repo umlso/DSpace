@@ -50,26 +50,11 @@ public class CollectionDropDown {
         {
             separator = " > ";
         }
-        
         Community[] getCom = null;
         StringBuffer name = new StringBuffer("");
         getCom = col.getCommunities(); // all communities containing given collection
-        for (Community com : getCom)
-        {
-            name.insert(0, com.getMetadata("name") + separator);
-        }
 
         name.append(col.getMetadata("name"));
-
-        if (maxchars != 0)
-        {
-            int len = name.length();
-            if (len > maxchars)
-            {
-                name = new StringBuffer(name.substring(len - (maxchars - 1), len));
-                name.insert(0, "\u2026"); // prepend with an ellipsis (cut from left)
-            }
-        }
 
         return name.toString();
     }
