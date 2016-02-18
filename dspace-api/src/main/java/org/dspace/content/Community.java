@@ -720,10 +720,10 @@ public class Community extends DSpaceObject
                 "  handle.handle, " +
                 "  text_value as name " +
                 "FROM " +
-                "  public.community2collection, " +
-                "  public.collection, " +
-                "  public.handle, " +
-                "  public.metadatavalue, public.metadatafieldregistry " +
+                "  community2collection, " +
+                "  collection, " +
+                "  handle, " +
+                "  metadatavalue, metadatafieldregistry " +
                 "WHERE " +
                 "  community2collection.collection_id = collection.collection_id AND " +
                 "  handle.resource_id = collection.collection_id AND " +
@@ -732,8 +732,15 @@ public class Community extends DSpaceObject
                 "  metadatavalue.resource_type_id = 3 AND " +
                 "  metadatavalue.resource_id = collection.collection_id AND " +
                 "  metadatafieldregistry.metadata_field_id = metadatavalue.metadata_field_id AND " +
-                "  metadatafieldregistry.element = 'title' " +
-                "  ORDER by UPPER(text_value) asc;";
+                "  metadatafieldregistry.element = 'title' " ;
+
+            if(DatabaseManager.isOracle()){
+                getCollectionsQuery += " ORDER BY cast(text_value as varchar2(128))";
+            }else{
+                getCollectionsQuery += " ORDER BY upper(text_value)";
+            }
+
+
 
         //OJS comm = 34
         Integer commID = this.getID();
