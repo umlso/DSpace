@@ -314,7 +314,7 @@
             </xsl:if>
 			<a>
 			<xsl:attribute name="href">
-				<xsl:value-of select="concat($context-path,'/browse?type=authorcontributor&amp;value=')"/>
+				<xsl:value-of select="concat($context-path,'/browse?type=author&amp;value=')"/>
                 <xsl:copy-of select="encoder:encode(node())"/>
 			</xsl:attribute>
 			<xsl:copy-of select="node()"/>
