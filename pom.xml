@@ -38,6 +38,8 @@
         <!-- 'root.basedir' is the path to the root [dspace-src] dir. It must be redefined by each child POM,
              as it is used to reference the LICENSE_HEADER and *.properties file(s) in that directory. -->
         <root.basedir>${basedir}</root.basedir>
+        <cua.version.number>5.5-4.1.0-0</cua.version.number>
+        <datatables.version.number>5.5-2.0.8-0</datatables.version.number>
     </properties>
 
     <build>
@@ -244,6 +246,26 @@
                     </execution>
                 </executions>
          </plugin>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-enforcer-plugin</artifactId>
+              <version>1.4</version>
+              <executions>
+                  <execution>
+                      <id>enforce-maven</id>
+                      <goals>
+                          <goal>enforce</goal>
+                      </goals>
+                      <configuration>
+                          <rules>
+                              <requireMavenVersion>
+                                  <version>[3.2,)</version>
+                              </requireMavenVersion>
+                          </rules>
+                      </configuration>
+                  </execution>
+              </executions>
+          </plugin>
       </plugins>
    </build>
    
@@ -725,6 +747,36 @@
             <artifactId>additions</artifactId>
             <version>5.6-SNAPSHOT</version>
          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>atmire-dspace-api</artifactId>
+              <version>5.5-1.15.11-0</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>atmire-dspace-xmlui</artifactId>
+              <version>5.5-1.15.11-0</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>datatables-api</artifactId>
+              <version>${datatables.version.number}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>datatables-xmlui-api</artifactId>
+              <version>${datatables.version.number}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>datatables-xmlui-webapp</artifactId>
+              <version>${datatables.version.number}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>atmire-datatables-common</artifactId>
+              <version>${datatables.version.number}</version>
+          </dependency>
 
          <dependency>
             <groupId>org.dspace</groupId>
@@ -1596,5 +1648,22 @@
     <distributionManagement>
         <!-- further distribution management is found upstream in the sonatype parent -->
     </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>atmire.com-releases</id>
+            <name>atmire.com-releases</name>
+            <url>https://atmire.com/artifactory/atmire.com-releases</url>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>fail</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 
 </project>

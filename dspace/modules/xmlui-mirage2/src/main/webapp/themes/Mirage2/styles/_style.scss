@@ -25,6 +25,11 @@
 
 // override DSpace default styling
 
+$fa-font-path: "../vendor/fontawesome/fonts";
+@import "../vendor/fontawesome/scss/font-awesome";
+
+@import "atmire-cua";
+
 // links should be underlined all the time
 a {
 	text-decoration: underline;
@@ -59,6 +64,10 @@ header .navbar-brand img {
 h1,h2,h3,h4,h5,h6,h7,h8,h9, .community-browser-row a  {
     font-family: 'Proxima Nova',Gotham,Helvetica,Arial,sans-serif;
     font-weight: bold;
+}
+
+.statlet .icon * {
+    font-family: FontAwesome;
 }
 
 .community-browser-row a {

@@ -37,6 +37,8 @@
     <xsl:import href="preprocess/communitylist.xsl"/>
     <xsl:import href="preprocess/itemview.xsl"/>
     <xsl:import href="preprocess/navigation.xsl"/>
+    <xsl:import href="preprocess/most-popular.xsl"/>
+    <xsl:import href="preprocess/statlets.xsl"/>
     <xsl:output indent="yes"/>
 
 </xsl:stylesheet>
