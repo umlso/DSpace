@@ -127,6 +127,7 @@
                     <xsl:apply-templates select="dri:list[@id = 'aspect.viewArtifacts.Navigation.list.context']" />
                     <xsl:apply-templates select="dri:list[@id = 'aspect.viewArtifacts.Navigation.list.administrative']" />
                     <xsl:apply-templates select="dri:list[@id = 'aspect.statistics.Navigation.list.statistics']" />
+                    <xsl:apply-templates select="dri:list[@id = 'aspect.statistics.Navigation.list.reportingSuite']" />
                 </xsl:when>
 
                 <xsl:otherwise> <!-- this IS a Discovery page, skip the search form and show the facets -->
@@ -136,6 +137,7 @@
                     <xsl:apply-templates select="dri:list[@id = 'aspect.viewArtifacts.Navigation.list.context']" />
                     <xsl:apply-templates select="dri:list[@id = 'aspect.viewArtifacts.Navigation.list.administrative']" />
                     <xsl:apply-templates select="dri:list[@id = 'aspect.statistics.Navigation.list.statistics']" />
+                    <xsl:apply-templates select="dri:list[@id = 'aspect.statistics.Navigation.list.reportingSuite']"/>
                 </xsl:otherwise>
             </xsl:choose>
 

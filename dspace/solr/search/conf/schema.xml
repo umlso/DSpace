@@ -531,6 +531,8 @@
     <!-- All Items/Communities/Collections placed in Discovery should have an handle -->
    <field name="handle" type="string" indexed="true" stored="true" omitNorms="true" docValues="true" />
 
+     <field name="handle_unversioned" type="string" indexed="true" stored="true" omitNorms="true" docValues="true" />
+
    <field name="withdrawn" type="string" indexed="true" stored="true" omitNorms="true" docValues="true" />
 
    <field name="discoverable" type="string" indexed="true" stored="true" omitNorms="true" docValues="true" />

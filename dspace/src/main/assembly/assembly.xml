@@ -68,6 +68,14 @@
          </includes>
          <filtered>true</filtered>
       </fileSet>
+      <fileSet>
+         <directory>target/atmire-modules</directory>
+         <outputDirectory>.</outputDirectory>
+         <includes>
+            <include>**</include>
+         </includes>
+         <filtered>true</filtered>
+      </fileSet>
    </fileSets>
 
    <!-- Copy over the dspace.cfg and log4j.properties files & filter them -->

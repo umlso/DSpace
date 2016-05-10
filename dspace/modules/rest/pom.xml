@@ -50,8 +50,8 @@
                            next. the order is unpredictable.
                         -->
                         <overlay>
-                            <groupId>org.dspace</groupId>
-                            <artifactId>dspace-rest</artifactId>
+                            <groupId>com.atmire</groupId>
+                            <artifactId>atmire-cua-rest-webapp</artifactId>
                         </overlay>
                     </overlays>
                 </configuration>
@@ -92,15 +92,22 @@
 
         <!-- DSpace REST Webapp -->
         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-rest</artifactId>
-            <type>war</type>
+            <groupId>com.atmire</groupId>
+            <artifactId>atmire-cua-rest-api</artifactId>
+            <version>${cua.version.number}</version>
+            <type>jar</type>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jaxb-impl</artifactId>
+                    <groupId>com.sun.xml.bind</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-rest</artifactId>
-            <type>jar</type>
-            <classifier>classes</classifier>
+            <groupId>com.atmire</groupId>
+            <artifactId>atmire-cua-rest-webapp</artifactId>
+            <version>${cua.version.number}</version>
+            <type>war</type>
         </dependency>
 
         <dependency>
