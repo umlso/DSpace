@@ -41,6 +41,11 @@
                 <exclude>dspace/config/dspace.cfg</exclude>
                 <exclude>dspace/config/log4j.properties</exclude>
                 <exclude>dspace/config/modules/**</exclude>
+                <!-- exclude CUA specific config
+                     because the dspace-api tests run without additions -->
+                <exclude>dspace/config/spring/api/spring-dspace-api-addon-cua.xml</exclude>
+                <exclude>dspace/config/spring/api/atmire-cua-update.xml</exclude>
+                <exclude>dspace/config/spring/xmlui/spring-dspace-addon-cua-services.xml</exclude>
             </excludes>
         </fileSet>
         <fileSet> 
