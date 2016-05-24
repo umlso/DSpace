@@ -20,6 +20,9 @@
     <context:annotation-config /> <!-- allows us to use spring annotations in beans -->
 
 
+    <bean class="com.atmire.dspace.discovery.AtmireSolrService" id="org.dspace.discovery.SearchService"/>
+    <bean class="com.atmire.dspace.discovery.HasBitstreamsSSIPlugin" id="hasBitstreamsSSIPlugin"/>
+
     <bean id="mostPopularItemData" class="com.atmire.statistics.mostpopular.MostPopularDataConfig" scope="prototype" >
         <property name="type" value="item"/>
         <property name="navigationLabel" value="xmlui.administrative.Navigation.most-popular.item"/>
