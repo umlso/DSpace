@@ -71,5 +71,6 @@ env:
   - secure: G3ydWVr/cW2uEbqUFtcRF63P1+rJX31xL5xgLsfL3Y6lxbHk4aWhDVi/rRD4S+BfltZ6RYnEMP1CDZIEyJVV+bea8UhW+5fAR4uJn4GmZyIn80si96SBhRM0QbSzvyXofwmM1tTdELSo7xeSKgTsOz3/g3jyIo3BT5naS1kalKI=
   - secure: b3TFpfhCANOppolFhEfh7NOJjlf8v/OWUdRzEeBpyh1QEHlWJcwdrRqsDpVX+j3Ttd6eqnyCozNytyM4+D7zX9UbUERwmJjKmrpudcY22MiodhKsffqskMbPDp/wx4/92B/wxeDx4VKQe0ocho/EOElxJ/iG/og/C+o1iECCRLs=
 
-secure: OLPi29iM1EU3ek3galqFYnXkf4wDpp2Vgictc8peRCtLYqCt2t3smoSHAj2e99u3dl9grlWpKxqN/JkzFnT4+qqyyn6A93We6+2fM38XE1IOhG8bmswTDOtczvb3jFgD+TV0OI+Qxi7IStcVWPv+J+MbJ5VXGemy/PXr4YO58ig=
-secure: IuJggZaPglNU1+a86J12shHbEtY85obSap5BwB5wWDlqlIXtI68ZHB0pRXT9d+RBF7NvTubQBROnJabQDKg1NdNSWS9kS+5Xwv/TaEkZagnEdZ8HFIZNnpjQ5dRSApKcMzl7/q0/YXl3vmtra+hFAEYFaHNPpyw/oLi8K8kahDk=
+   # atmire/DSpace
+   - secure: OLPi29iM1EU3ek3galqFYnXkf4wDpp2Vgictc8peRCtLYqCt2t3smoSHAj2e99u3dl9grlWpKxqN/JkzFnT4+qqyyn6A93We6+2fM38XE1IOhG8bmswTDOtczvb3jFgD+TV0OI+Qxi7IStcVWPv+J+MbJ5VXGemy/PXr4YO58ig=
+   - secure: IuJggZaPglNU1+a86J12shHbEtY85obSap5BwB5wWDlqlIXtI68ZHB0pRXT9d+RBF7NvTubQBROnJabQDKg1NdNSWS9kS+5Xwv/TaEkZagnEdZ8HFIZNnpjQ5dRSApKcMzl7/q0/YXl3vmtra+hFAEYFaHNPpyw/oLi8K8kahDk=
