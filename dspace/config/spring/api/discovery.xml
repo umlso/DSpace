@@ -45,6 +45,7 @@
 
                <!--Use site to override the default configuration for the home page & default discovery page-->
                <entry key="site" value-ref="homepageConfiguration" />
+                <entry key="general_cua" value-ref="cuaConfig"/>
                <!--<entry key="123456789/7621" value-ref="defaultConfiguration"/>-->
             </map>
         </property>
@@ -698,5 +699,64 @@
         <property name="type" value="date"/>
     </bean>
 
+
+    <bean id="cuaConfig" class="org.dspace.discovery.configuration.DiscoveryConfiguration" scope="prototype">
+        <property name="id" value="cuaConfig"/>
+        <!--Which sidebar facets are to be displayed-->
+        <property name="sidebarFacets">
+            <list>
+                <ref bean="searchFilterAuthor"/>
+                <ref bean="searchFilterSubject"/>
+                <ref bean="searchFilterIssued"/>
+
+            </list>
+        </property>
+        <!--The search filters which can be used on the discovery search page-->
+        <property name="searchFilters">
+            <list>
+                <ref bean="searchFilterTitle"/>
+                <ref bean="searchFilterAuthor"/>
+                <ref bean="searchFilterSubject"/>
+                <ref bean="searchFilterIssued"/>
+                <ref bean="searchFilterLanguage"/>
+                <ref bean="searchFilterType"/>
+            </list>
+        </property>
+        <!--The sort filters for the discovery search-->
+        <property name="searchSortConfiguration">
+            <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
+                <!--<property name="defaultSort" ref="sortDateIssued"/>-->
+                <!--DefaultSortOrder can either be desc or asc (desc is default)-->
+                <property name="defaultSortOrder" value="desc"/>
+                <property name="sortFields">
+                    <list>
+                        <ref bean="sortTitle"/>
+                        <ref bean="sortDateIssued"/>
+                    </list>
+                </property>
+            </bean>
+        </property>
+
+        <property name="recentSubmissionConfiguration">
+            <bean class="org.dspace.discovery.configuration.DiscoveryRecentSubmissionsConfiguration">
+                <property name="metadataSortField" value="dc.date.accessioned"/>
+                <property name="type" value="date"/>
+                <property name="max" value="5"/>
+            </bean>
+        </property>
+    </bean>
+
+
+    <bean id="searchFilterType" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="type"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.type</value>
+
+            </list>
+        </property>
+        <property name="facetLimit" value="10"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
    
 </beans>

@@ -1,10 +1,6 @@
 language: java
 sudo: false
 
-env: 
-  # Give Maven 1GB of memory to work with
-  - MAVEN_OPTS=-Xmx1024M
-
 # Install prerequisites for building Mirage2 more rapidly
 before_install:
   # Install latest Node.js 0.10.x & print version info
@@ -29,6 +25,8 @@ branches:
     only:
         - master
         - mospace-5_x
+        - lso-1609-get-travis-ci-working-with-atmire-maven-repository
+        - re_1608_atmire_cua_install
 
 # Skip install stage, as we'll do it below
 install: "echo 'Skipping install stage, dependencies will be downloaded during build and test stages.'"
@@ -37,6 +35,8 @@ install: "echo 'Skipping install stage, dependencies will be downloaded during b
 # 1. Install & Unit Test APIs
 # 2. Assemble DSpace
 script:
+  # 0. run mvn help:effective-settings to confirm credentials are in use
+  - "mvn help:effective-settings --settings ./settings.xml"
   # 1. [Install & Unit Test] Check source code licenses and run source code Unit Tests
   #    (This explicitly skips building the 'dspace' assembly module, since we only want to do that ONCE.)
   #        license:check => Validate all source code license headers
@@ -44,13 +44,37 @@ script:
   #        -P !dspace => SKIP full DSpace assembly (will do below)
   #        -B => Maven batch/non-interactive mode (recommended for CI)
   #        -V => Display Maven version info before build
-  - "mvn clean install license:check -Dmaven.test.skip=false -P !dspace -B -V"
+  - "mvn clean install license:check -Dmaven.test.skip=false -P !dspace -B -V --settings ./settings.xml"
   # 2. [Assemble DSpace] Ensure assembly process works (from [src]/dspace/), including Mirage 2
   #        -Dmirage2.on=true => Build Mirage2
   #        -Dmirage2.deps.included=false => Don't include Mirage2 build dependencies (We installed them in before_install)
   #        -P !assembly => SKIP the actual building of [src]/dspace/dspace-installer (as it can be memory intensive)
-  - "cd dspace && mvn package -Dmirage2.on=true -Dmirage2.deps.included=false -P !assembly -B -V"
+  - "mvn package -Dmirage2.on=true -Dmirage2.deps.included=false -P !assembly -B -V --settings ./settings.xml"
+
 notifications:
   hipchat:
     rooms:
       secure: IJ/e7tbe7xZeC3BAMrQUgKOe9ZoayqhQRLgeCONw1KlcW7Vncq3SXVHyP5p5kssPEgt+7rbRbtoFqwa3seoIxXdW2E4NpOoo6TNYsrJLL1GC3GQAZ6Tqawbw+vnbsjRpBkDFNV9cQQFZaVBkQzRMO6BHVQmOiJ8dLJMxLbmFrgk=
+env:
+  global:
+  # Give Maven 1GB of memory to work with
+  - MAVEN_OPTS=-Xmx1024M
+
+# ENCRYPTED TOKENS: one set per developer (all other tokens will be un-decryptable and thus ignored)
+  # use these encrypted tokens for access to atmire's private Maven repository
+
+    # UMLSO/DSpace
+  - secure: exONiATp9HEvocvWhlpYN5Yb3UkemjvS6rjXGiXkTMF3Oq099OTamXUpEXYKfRC4+aNeUOHOSKQrHSvBfR3lS4khqfXv53OTup2bGYcAS0R5KatHslU89CfD+p5JsT2ki/lQ1nBmC+V1BU1UbuspxzwKRM00QNXQAF7tfi6gmf8=
+  - secure: aM9RQQDTgdQWZat3pV8vrgALHEi1eNNkaP8ybeZojQ7zE4EdHBkJI7Gf+e2zsz/f8Z1+CxMxePsY0VXDB7pyF8TxXNUPZgBEaFtsP1l7l2m0lxzLQZ45XEeJVPGFaivIf/h2ySZoimv0MoemGxeaKjG0/Il9l/QgUGG5Dfod7rs=
+
+    # hardyoyo/DSpace
+  - secure: G3ydWVr/cW2uEbqUFtcRF63P1+rJX31xL5xgLsfL3Y6lxbHk4aWhDVi/rRD4S+BfltZ6RYnEMP1CDZIEyJVV+bea8UhW+5fAR4uJn4GmZyIn80si96SBhRM0QbSzvyXofwmM1tTdELSo7xeSKgTsOz3/g3jyIo3BT5naS1kalKI=
+  - secure: b3TFpfhCANOppolFhEfh7NOJjlf8v/OWUdRzEeBpyh1QEHlWJcwdrRqsDpVX+j3Ttd6eqnyCozNytyM4+D7zX9UbUERwmJjKmrpudcY22MiodhKsffqskMbPDp/wx4/92B/wxeDx4VKQe0ocho/EOElxJ/iG/og/C+o1iECCRLs=
+
+   # atmire/DSpace
+   - secure: OLPi29iM1EU3ek3galqFYnXkf4wDpp2Vgictc8peRCtLYqCt2t3smoSHAj2e99u3dl9grlWpKxqN/JkzFnT4+qqyyn6A93We6+2fM38XE1IOhG8bmswTDOtczvb3jFgD+TV0OI+Qxi7IStcVWPv+J+MbJ5VXGemy/PXr4YO58ig=
+   - secure: IuJggZaPglNU1+a86J12shHbEtY85obSap5BwB5wWDlqlIXtI68ZHB0pRXT9d+RBF7NvTubQBROnJabQDKg1NdNSWS9kS+5Xwv/TaEkZagnEdZ8HFIZNnpjQ5dRSApKcMzl7/q0/YXl3vmtra+hFAEYFaHNPpyw/oLi8K8kahDk=
+
+   # KevinVdV/DSpace
+   - secure: FwjUbyR4MIfj8m/QTrRVGXfFYo7lCFGcPbm/UKtMc/du4J2/ojaD9cclMu/+cBtBLMn4wwXR3Fi5V9k9mcNZ9tNxBHLstjVgjPpUCuXEZX8iXUvDTpRv7Yq6o1Wwsh9XjEe4SnpSeuRzgPX0TGazPl3S8WIf4Jr+HXSWyzZ4Vw3zkbmXv47GvaoAPr0Dif3HvQcdrYt/KYBdRRJcpvmQRhFEhLn0HAfw0UIG66flmPEC0McFq8E3F+h0zhdc+qDToUWKq7mRJB8hdA0j6JG/ZK+BZhIWUJHlfy6h9zyAYewyvAhH/ovVhuCWZDoWwwBVVHTBQevj6OpLqOi4oXAXAm1c8Epg5wUbsic/EJ1KgWUTUDZK3WGGj0tRyvmyWXU53rxgOxTVmsclUmgO/YSiSvcMD/I2Nx8+RWoxRBP1W7Z4zo4IaKn+GPIlVc+XMQkQr+qjwQG38/7BMHC5LQ1oUZbbcScZ88Jfem43cdQlYxFrQdx1dLjPm/2buCkpVhN6WP4W9SyR02k7Wi/dkaNMLvSkrAmJpvIPdcki+H939+9XIF1ldvWMyHOMa7RzL7QeAXa4U86cuoIbdID2trUi17kLhzmr5x7OQqXh9NeaHlU3RRX2Nb7RYRZG3UTKzIxeqh4OWmfyPS6uTERh1JGssmMDyFpNoXC7aDnpuuv8/4k=
+   - secure: fHWByGoQbXmP8zeqaBPo4pjLpq9HZekOL+SllS5m2WA/BHXtBJ+0277z1zPXM/enyW3SHrszpMbWy2mGP0Dm2Vhu512VNWJ1Ah9DSRJOwB4NjaHLSgiWXrLQShQyoWuTuUP8PcSB1vAs/U45euJxGTtkZxFjTBo48Wul8vKzwwz/MWuV4usQ9VMWEb6gH8xH2qKJ6mquXXt+rnR6WRGcx6y1PioHLE9gmkIDZvWTJ3nJ24P8n9HOR0p8Bdvh5kUAFGdBwXeIcoivdQuCDdBlKHKRkdGcoVr+0dRVbtqW6N6y+fA9Wj0nWRVLtZjkq1CZ5ZdeqzEGQW6Rj2oJN65gTGOFTqFB9jLKk+BRREWmw+7UOWbGDrdw4Wo6mk+DCFMl/EojYXm4L6WcGGy1tNkZo2mveXVPpqaCo4k8hh7UkUetKCwHUtXAZCJtmhjZNHwrtAyB58X/upXWyMCyJ8eKyqGzIHUFCOnmT2aUQAGDm4u1tryRKRwky1aP9SpPz/Uj7KNs9oOb5aPyn+jOcfEd5FFkEgHH35QjUnFEaLK/6cXiHPUh/dQWNObFAOCQxB+uV4zQ23NzcLAxkbzE/48rGmnRCd+Oot4gJx6/EqCgpJTtk+4iC2FXOZtfoaKQwEv7bcxOMEZ98/7gmmANqlD7VQOaFDwAUoP2Ukr0hOhbYGE=

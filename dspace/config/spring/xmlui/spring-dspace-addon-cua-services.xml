@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    The contents of this file are subject to the license and copyright
+    detailed in the LICENSE and NOTICE files at the root of the source
+    tree and available online at
+
+    http://www.dspace.org/license/
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd"
+    default-autowire-candidates="*Service,*DAO,javax.sql.DataSource">
+
+    <context:annotation-config /> <!-- allows us to use spring annotations in beans -->
+
+    <bean id="com.atmire.plugins.ReportingSuitePlugin" class="com.atmire.plugins.ReportingSuitePlugin"/>
+
+    <bean id="view" class="org.dspace.app.xmlui.aspect.statistics.editorparts.SimplifiedTimeFilterConfig">
+
+        <constructor-arg index="0">
+            <list>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="at"/>
+                    <constructor-arg index="1" value=""/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="m1m"/>
+                    <constructor-arg index="1" value=""/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="m3m"/>
+                    <constructor-arg index="1" value=""/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="m6m"/>
+                    <constructor-arg index="1" value=""/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="yp"/>
+                    <constructor-arg index="1" value=""/>
+                </bean>
+
+
+
+
+            </list>
+        </constructor-arg>
+        <constructor-arg index="1" ref="yp"/>
+        <property name="reportPeriods">
+            <list>
+                <ref bean="day"/>
+                <ref bean="week"/>
+                <ref bean="month"/>
+                <ref bean="quarter"/>
+                <ref bean="year"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="mostpopular" class="org.dspace.app.xmlui.aspect.statistics.editorparts.SimplifiedTimeFilterConfig">
+
+        <constructor-arg index="0">
+            <list>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="at"/>
+                    <constructor-arg index="1" value="DAY"/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="m1m"/>
+                    <constructor-arg index="1" value=""/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="m3m"/>
+                    <constructor-arg index="1" value="DAY"/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="m6m"/>
+                    <constructor-arg index="1" value="DAY"/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="yp"/>
+                    <constructor-arg index="1" value="DAY"/>
+                </bean>
+
+
+
+
+            </list>
+        </constructor-arg>
+        <constructor-arg index="1" ref="at"/>
+        <property name="reportPeriods">
+            <list>
+                <ref bean="day"/>
+                <ref bean="week"/>
+                <ref bean="month"/>
+                <ref bean="quarter"/>
+                <ref bean="year"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="workflow" class="org.dspace.app.xmlui.aspect.statistics.editorparts.SimplifiedTimeFilterConfig">
+
+        <constructor-arg index="0">
+            <list>
+
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="at"/>
+                    <constructor-arg index="1" value="DAY"/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="m1m"/>
+                    <constructor-arg index="1" value=""/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="m3m"/>
+                    <constructor-arg index="1" value="DAY"/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="m6m"/>
+                    <constructor-arg index="1" value="DAY"/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="yp"/>
+                    <constructor-arg index="1" value="DAY"/>
+                </bean>
+
+
+            </list>
+        </constructor-arg>
+        <constructor-arg index="1" ref="m1m"/>
+    </bean>
+
+    <bean id="content" class="org.dspace.app.xmlui.aspect.statistics.editorparts.SimplifiedTimeFilterConfig">
+
+        <constructor-arg index="0">
+            <list>
+
+
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="at"/>
+                    <constructor-arg index="1" value="DAY"/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="m1m"/>
+                    <constructor-arg index="1" value=""/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="m3m"/>
+                    <constructor-arg index="1" value="DAY"/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="m6m"/>
+                    <constructor-arg index="1" value="DAY"/>
+                </bean>
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="yp"/>
+                    <constructor-arg index="1" value="DAY"/>
+                </bean>
+
+                <bean class="org.apache.commons.lang3.tuple.ImmutablePair">
+                    <constructor-arg index="0" ref="cst"/>
+                    <constructor-arg index="1" value=""/>
+                </bean>
+
+
+            </list>
+        </constructor-arg>
+        <constructor-arg index="1" ref="yp"/>
+    </bean>
+
+    <bean id="cst" class="org.apache.commons.lang3.tuple.ImmutablePair">
+        <constructor-arg index="0" value="custom"/>
+        <constructor-arg index="1"
+                         value="xmlui.reporting-suite.statistics.graph-editor.time-filter.custom"/>
+
+
+    </bean>
+
+    <bean id="m1m" class="org.apache.commons.lang3.tuple.ImmutablePair">
+        <constructor-arg index="0" value="1 month"/>
+        <constructor-arg index="1"
+                         value="xmlui.reporting-suite.statistics.graph-editor.time-filter.1month"/>
+
+
+    </bean>
+
+    <bean id="m3m" class="org.apache.commons.lang3.tuple.ImmutablePair">
+        <constructor-arg index="0" value="3 months"/>
+        <constructor-arg index="1"
+                         value="xmlui.reporting-suite.statistics.graph-editor.time-filter.3months"/>
+
+
+    </bean>
+
+
+    <bean id="m6m" class="org.apache.commons.lang3.tuple.ImmutablePair">
+        <constructor-arg index="0" value="6 months"/>
+        <constructor-arg index="1"
+                         value="xmlui.reporting-suite.statistics.graph-editor.time-filter.6months"/>
+
+
+    </bean>
+
+    <bean id="yp" class="org.apache.commons.lang3.tuple.ImmutablePair">
+        <constructor-arg index="0" value="1 year"/>
+        <constructor-arg index="1" value="xmlui.reporting-suite.statistics.graph-editor.time-filter.1year"/>
+
+
+    </bean>
+
+    <bean id="at" class="org.apache.commons.lang3.tuple.ImmutablePair">
+        <constructor-arg index="0" value="alltime"/>
+        <constructor-arg index="1" value="xmlui.reporting-suite.statistics.graph-editor.time-filter.alltime"/>
+
+
+    </bean>
+
+    <bean id="day" class="org.apache.commons.lang3.tuple.ImmutablePair">
+        <constructor-arg index="0">
+            <bean class="org.joda.time.Period" factory-method="parse">
+                <constructor-arg index="0" value="1 day"/>
+                <constructor-arg index="1" value="#{ T(org.joda.time.format.PeriodFormat).getDefault()}"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg index="1" value="xmlui.reporting-suite.statistics.graph-editor.time-filter.day"/>
+    </bean>
+
+    <bean id="week" class="org.apache.commons.lang3.tuple.ImmutablePair">
+        <constructor-arg index="0">
+            <bean class="org.joda.time.Period" factory-method="parse">
+                <constructor-arg index="0" value="1 week"/>
+                <constructor-arg index="1" value="#{ T(org.joda.time.format.PeriodFormat).getDefault()}"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg index="1" value="xmlui.reporting-suite.statistics.graph-editor.time-filter.week"/>
+    </bean>
+
+    <bean id="month" class="org.apache.commons.lang3.tuple.ImmutablePair">
+        <constructor-arg index="0">
+            <bean class="org.joda.time.Period" factory-method="parse">
+                <constructor-arg index="0" value="1 month"/>
+                <constructor-arg index="1" value="#{ T(org.joda.time.format.PeriodFormat).getDefault()}"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg index="1" value="xmlui.reporting-suite.statistics.graph-editor.time-filter.month"/>
+    </bean>
+
+    <bean id="quarter" class="org.apache.commons.lang3.tuple.ImmutablePair">
+        <constructor-arg index="0">
+            <bean class="org.joda.time.Period" factory-method="parse">
+                <constructor-arg index="0" value="3 months"/>
+                <constructor-arg index="1" value="#{ T(org.joda.time.format.PeriodFormat).getDefault()}"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg index="1" value="xmlui.reporting-suite.statistics.graph-editor.time-filter.quarter"/>
+    </bean>
+
+
+    <bean id="year" class="org.apache.commons.lang3.tuple.ImmutablePair">
+        <constructor-arg index="0">
+            <bean class="org.joda.time.Period" factory-method="parse">
+                <constructor-arg index="0" value="1 year"/>
+                <constructor-arg index="1" value="#{ T(org.joda.time.format.PeriodFormat).getDefault()}"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg index="1" value="xmlui.reporting-suite.statistics.graph-editor.time-filter.year"/>
+    </bean>
+
+    <bean id="com.atmire.app.xmlui.aspect.statistics.mostpopular.MostPopularManager"
+          class="com.atmire.app.xmlui.aspect.statistics.mostpopular.MostPopularManager" lazy-init="true"
+          scope="prototype">
+        <property name="configs">
+            <map>
+                <entry key="item" value-ref="mostPopularItem"/>
+                <entry key="country" value-ref="mostPopularCountry"/>
+                <entry key="author" value-ref="mostPopularAuthor"/>
+                <entry key="referrer" value-ref="mostPopularReferrer"/>
+            </map>
+        </property>
+        <property name="defaultConfig" value="item"/>
+    </bean>
+
+    <bean id="mostPopularItem" class="com.atmire.app.xmlui.aspect.statistics.mostpopular.MostPopularConfig"
+          scope="prototype">
+        <property name="dataConfig" ref="mostPopularItemData"/>
+        <property name="strategy">
+            <bean class="com.atmire.app.xmlui.aspect.statistics.MostPopularBaseWingStrategy"/>
+        </property>
+    </bean>
+
+    <bean id="mostPopularCountry" class="com.atmire.app.xmlui.aspect.statistics.mostpopular.MostPopularConfig"
+          scope="prototype">
+        <property name="dataConfig" ref="mostPopularCountryData"/>
+        <property name="strategy">
+            <bean class="com.atmire.app.xmlui.aspect.statistics.MostPopularWingByCountry"/>
+        </property>
+    </bean>
+
+    <bean id="mostPopularAuthor" class="com.atmire.app.xmlui.aspect.statistics.mostpopular.MostPopularConfig"
+          lazy-init="true" scope="prototype">
+        <property name="dataConfig" ref="mostPopularAuthorData"/>
+
+        <property name="strategy">
+            <bean class="com.atmire.app.xmlui.aspect.statistics.MostPopularWingByMetadata"
+                  scope="prototype">
+                <property name="field" value="author"/>
+                <property name="bytype" value="author"/>
+                <property name="header" value="xmlui.Statistics.most-popular.author.h1"/>
+                <property name="tableheader" value="xmlui.Statistics.most-popular.author.table"/>
+            </bean>
+        </property>
+    </bean>
+
+
+    <bean id="mostPopularReferrer" class="com.atmire.app.xmlui.aspect.statistics.mostpopular.MostPopularConfig"
+          scope="prototype">
+        <property name="dataConfig" ref="mostPopularReferrerData"/>
+        <property name="strategy">
+            <bean class="com.atmire.app.xmlui.aspect.statistics.MostPopularWingByReferrer"/>
+        </property>
+        <!--<property name="feature" ref="trafficMarkerFeature"/>-->
+    </bean>
+
+</beans>

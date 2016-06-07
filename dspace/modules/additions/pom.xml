@@ -73,6 +73,11 @@
    -->
    <dependencies>
       <dependency>
+         <groupId>com.atmire</groupId>
+         <artifactId>atmire-cua-api</artifactId>
+         <version>${cua.version.number}</version>
+      </dependency>
+      <dependency>
          <groupId>org.dspace</groupId>
          <artifactId>dspace-api</artifactId>
       </dependency>
@@ -99,7 +104,7 @@
       <dependency>
          <groupId>org.dspace</groupId>
          <artifactId>dspace-replicate</artifactId>
-         <version>3.2</version>
+         <version>3.3</version>
       </dependency>
  
    </dependencies>

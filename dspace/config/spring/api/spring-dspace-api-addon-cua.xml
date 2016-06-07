@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    The contents of this file are subject to the license and copyright
+    detailed in the LICENSE and NOTICE files at the root of the source
+    tree and available online at
+
+    http://www.dspace.org/license/
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.w3.org/2001/XMLSchema"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd"
+       default-autowire-candidates="*Service,*DAO,javax.sql.DataSource">
+
+    <context:annotation-config /> <!-- allows us to use spring annotations in beans -->
+
+
+    <bean class="com.atmire.dspace.discovery.AtmireSolrService" id="org.dspace.discovery.SearchService"/>
+    <bean class="com.atmire.dspace.discovery.HasBitstreamsSSIPlugin" id="hasBitstreamsSSIPlugin"/>
+
+    <bean id="mostPopularItemData" class="com.atmire.statistics.mostpopular.MostPopularDataConfig" scope="prototype" >
+        <property name="type" value="item"/>
+        <property name="navigationLabel" value="xmlui.administrative.Navigation.most-popular.item"/>
+        <!--possibilities are anonymous/user/admin/disabled-->
+        <property name="authorization" value="anonymous"/>
+        <property name="dataProcessor">
+            <bean class="com.atmire.statistics.mostpopular.ItemDataProcessor"/>
+        </property>
+        <property name="generator">
+            <bean class="com.atmire.statistics.generator.TopNDSODatasetGenerator">
+                <!--Constants.ITEM-->
+                <constructor-arg index="0" value="2"/>
+                <constructor-arg index="1" value="10"/>
+            </bean>
+        </property>
+        <property name="filter">
+            <bean class="com.atmire.statistics.content.filter.mostpopular.StatisticsMostPopularFilter" scope="prototype">
+                <property name="escapeQueryChars" value="false" />
+                <!--<property name="queryField" value="version_id" />-->
+                <property name="queryField" value="containerItem" />
+            </bean>
+        </property>
+        <property name="additionalFilters" ref="additionalFilters"/>
+    </bean>
+
+    <bean id="mostPopularCountryData" class="com.atmire.statistics.mostpopular.MostPopularDataConfig" scope="prototype" >
+        <!--possibilities are anonymous/user/admin/disabled-->
+        <property name="authorization" value="anonymous"/>
+        <property name="type" value="country"/>
+        <property name="navigationLabel" value="xmlui.administrative.Navigation.most-popular.country"/>
+        <property name="dataProcessor">
+            <bean class="com.atmire.statistics.mostpopular.CountryDataProcessor"/>
+        </property>
+        <property name="generator">
+            <bean class="org.dspace.statistics.content.DatasetTypeGenerator">
+                <property name="type" value="countryCode" />
+            </bean>
+        </property>
+        <property name="filter">
+            <bean class="com.atmire.statistics.content.filter.mostpopular.StatisticsMostPopularFilter" scope="prototype">
+                <property name="escapeQueryChars" value="false" />
+                <property name="queryField" value="countryCode" />
+            </bean>
+        </property>
+        <property name="additionalFilters" ref="additionalFilters"/>
+    </bean>
+
+    <bean id="mostPopularFilterData" class="com.atmire.statistics.mostpopular.MostPopularDataConfig" scope="prototype" >
+        <!--possibilities are anonymous/user/admin/disabled-->
+        <property name="authorization" value="disabled"/> <!--only by link-->
+        <property name="type" value="filter"/>
+        <property name="navigationLabel" value="xmlui.administrative.Navigation.most-popular.item"/>
+        <property name="dataProcessor">
+            <bean class="com.atmire.statistics.mostpopular.ItemDataProcessor"/>
+        </property>
+        <property name="generator">
+            <bean class="com.atmire.statistics.generator.TopNDSODatasetGenerator">
+                <!--Constants.ITEM-->
+                <constructor-arg index="0" value="2"/>
+                <constructor-arg index="1" value="10"/>
+            </bean>
+        </property>
+        <property name="filter">
+            <bean class="com.atmire.statistics.content.filter.mostpopular.StatisticsMostPopularFilter" scope="prototype">
+                <property name="escapeQueryChars" value="false" />
+                <!--<property name="queryField" value="version_id" />-->
+                <property name="queryField" value="containerItem" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="mostPopularAuthorData" class="com.atmire.statistics.mostpopular.MostPopularDataConfig">
+        <!--possibilities are anonymous/user/admin/disabled-->
+        <property name="authorization" value="anonymous"/>
+        <property name="navigationLabel" value="xmlui.administrative.Navigation.most-popular.author"/>
+        <property name="dataProcessor">
+            <bean class="com.atmire.statistics.mostpopular.MetadataDataProcessor">
+                <property name="field" value="author"/>
+            </bean>
+        </property>
+        <property name="generator">
+            <bean class="org.dspace.statistics.content.DatasetTypeGenerator">
+                <property name="type" value="author_mtdt"/>
+            </bean>
+        </property>
+        <property name="filter">
+            <bean class="com.atmire.statistics.content.filter.mostpopular.StatisticsMostPopularFilter"
+                  scope="prototype">
+                <property name="escapeQueryChars" value="true"/>
+                <property name="queryField" value="author_mtdt"/>
+            </bean>
+        </property>
+        <!--<property name="strategy">-->
+        <!--<bean class="com.atmire.app.xmlui.aspect.statistics.MostPopularWingByMetadata">-->
+        <!--<property name="field" value="author"/>-->
+        <!--<property name="bytype" value="author"/>-->
+        <!--<property name="header" value="xmlui.Statistics.most-popular.author.h1"/>-->
+        <!--<property name="tableheader" value="xmlui.Statistics.most-popular.author.table"/>-->
+        <!--</bean>-->
+        <!--</property>-->
+        <property name="additionalFilters" ref="additionalFilters"/>
+    </bean>
+
+    <bean id="additionalFilters" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="internalsemantic"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="mostPopularReferrerData" class="com.atmire.statistics.mostpopular.MostPopularDataConfig" scope="prototype">
+        <!--possibilities are anonymous/user/admin/disabled-->
+        <property name="authorization" value="anonymous"/>
+        <property name="type" value="referrer_domain"/>
+        <property name="navigationLabel" value="xmlui.administrative.Navigation.most-popular.referrer"/>
+        <property name="dataProcessor">
+            <bean class="com.atmire.statistics.mostpopular.ReferrerDataProcessor"/>
+        </property>
+        <property name="generator">
+            <bean class="org.dspace.statistics.content.DatasetTypeGenerator">
+                <property name="type" value="referrer_domain"/>
+            </bean>
+        </property>
+        <property name="filter">
+            <bean class="com.atmire.statistics.content.filter.mostpopular.StatisticsMostPopularFilter" scope="prototype">
+                <property name="escapeQueryChars" value="true"/>
+                <property name="queryField" value="referrer_domain"/>
+            </bean>
+        </property>
+        <property name="additionalFilters" ref="additionalFilters"/>
+    </bean>
+
+</beans>
