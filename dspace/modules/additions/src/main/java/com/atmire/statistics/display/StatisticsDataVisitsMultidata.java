@@ -53,7 +53,7 @@ public class StatisticsDataVisitsMultidata extends StatisticsDataVisits {
     /**
      * Construct a completely uninitialized query.
      */
-    public StatisticsDataVisitsMultidata(int column, int count,StatisticsMostPopularFilter filter, DataProcessor dataProcessor,DSpaceObject dso) {
+    public StatisticsDataVisitsMultidata(int column, int count, StatisticsMostPopularFilter filter, DataProcessor dataProcessor, DSpaceObject dso) {
         super(dso);
         this.column = column;
         this.count = count;
@@ -117,9 +117,9 @@ public class StatisticsDataVisitsMultidata extends StatisticsDataVisits {
             q.setMax(max);
 
             boolean hasMore = false;
-            if (counts.length > max) {
+            if (counts.length > max + 1) {
                 hasMore = true;
-                ArrayUtils.remove(counts, counts.length - 1);
+                counts = ArrayUtils.remove(counts, max);
             }
 
             Dataset dataset = new Dataset(counts.length, 3 + (dataProcessor.getAdditionalColumns() != null ? dataProcessor.getAdditionalColumns().size() : 0) );
