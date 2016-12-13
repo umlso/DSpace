@@ -718,6 +718,11 @@
         <property name="type" value="date"/>
     </bean>
  
+    <bean id="sortDateAvailable" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
+        <property name="metadataField" value="dc.date.available"/>
+        <property name="type" value="date"/>
+    </bean>
+
     <bean id="sortDateSubmitted" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
         <property name="metadataField" value="dc.date.submitted"/>
         <property name="type" value="date"/>
@@ -761,6 +766,7 @@
                     <list>
                         <ref bean="sortTitle"/>
                         <ref bean="sortDateIssued"/>
+                        <ref bean="sortDateAvailable"/>
                     </list>
                 </property>
             </bean>
