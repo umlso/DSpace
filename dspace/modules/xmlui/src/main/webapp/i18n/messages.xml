@@ -2539,4 +2539,8 @@
 	<message key="cua.statlet.top-item-views-past-x-months">Top items of the past [0] months based on item views</message>
 	<message key="cua.statlet.top-author-views-past-x-months">Top authors of the past [0] months based on item views</message>
 	<message key="cua.statlet.page-views">Item Views</message>
+
+	<message key="xmlui.reporting-suite.statistics.graph-editor.data-source.dataset.option.discipline">Discipline (dc.subject.discipline)</message>
+	<message key="xmlui.reporting-suite.statistics.graph-editor.data-source.dataset.option.advisor">Advisor (dc.contributor.advisor)</message>
+	<message key="xmlui.reporting-suite.statistics.graph-editor.data-source.dataset.option.contributor">Contributor (dc.contributor.*)</message>
 </catalogue>
