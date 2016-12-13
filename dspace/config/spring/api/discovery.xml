@@ -463,6 +463,30 @@
         <property name="sortOrder" value="COUNT"/>
     </bean>
 
+    <bean id="searchFilterContributor" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="contributor"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.contributor.advisor</value>
+                <value>dc.contributor.author</value>
+                <value>dc.contributor.committeemember</value>
+                <value>dc.contributor.corporatename</value>
+                <value>dc.contributor.deptlab</value>
+                <value>dc.contributor.editor</value>
+                <value>dc.contributor.facultyauthor</value>
+                <value>dc.contributor.id</value>
+                <value>dc.contributor.illustrator</value>
+                <value>dc.contributor.meetingname</value>
+                <value>dc.contributor.orcid</value>
+                <value>dc.contributor.other</value>
+                <value>dc.contributor.sponsor</value>
+                <value>dc.contributor</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+
     <bean id="searchFilterThesisSemester" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="thesisSemester"/>
         <property name="metadataFields">
@@ -708,7 +732,9 @@
                 <ref bean="searchFilterAuthor"/>
                 <ref bean="searchFilterSubject"/>
                 <ref bean="searchFilterIssued"/>
-
+                <ref bean="searchFilterDiscipline"/>
+                <ref bean="searchFilterAdvisor"/>
+                <ref bean="searchFilterContributor"/>
             </list>
         </property>
         <!--The search filters which can be used on the discovery search page-->
@@ -720,6 +746,9 @@
                 <ref bean="searchFilterIssued"/>
                 <ref bean="searchFilterLanguage"/>
                 <ref bean="searchFilterType"/>
+                <ref bean="searchFilterDiscipline"/>
+                <ref bean="searchFilterAdvisor"/>
+                <ref bean="searchFilterContributor"/>
             </list>
         </property>
         <!--The sort filters for the discovery search-->
