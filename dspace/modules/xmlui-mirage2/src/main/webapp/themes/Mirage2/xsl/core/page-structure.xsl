@@ -105,10 +105,10 @@
                                             <div class="word-break hidden-print visible-xs hidden-sm hidden-md hidden-lg">
                                             <div class="list-group">
                                                 <a class="list-group-item ds-option" href="{$app_path}/discover">advanced search</a>
-                                                <a class="list-group-item ds-option" href="{$app_path}/pages/add">submit works</a>
-                                                <a class="list-group-item ds-option" href="{$app_path}/pages/about">about</a>
-                                                <a class="list-group-item ds-option" href="{$app_path}/pages/help">help</a>
-                                                <a class="list-group-item ds-option" href="{$app_path}/pages/contact">contact us</a>
+                                                <a class="list-group-item ds-option" href="{$app_path}/handle/10355/59596">submit works</a>
+                                                <a class="list-group-item ds-option" href="{$app_path}/handle/10355/59594">about</a>
+                                                <a class="list-group-item ds-option" href="{$app_path}/handle/10355/59597">help</a>
+                                                <a class="list-group-item ds-option" href="{$app_path}/handle/10355/59595">contact us</a>
                                             </div>
                                             </div>
                                             <xsl:apply-templates select="dri:options"/>
@@ -439,16 +439,16 @@
                             <li role="presentation"><a href="{$app_path}/discover?advancedMode">advanced search</a></li>
                         </ul>
                        <ul class="nav navbar-nav  pull-left">
-                            <li role="presentation"><a href="{$app_path}/pages/add">submit works</a></li>
+                            <li role="presentation"><a href="{$app_path}handle/10355/59596">submit works</a></li>
                         </ul>
                         <ul class="nav navbar-nav  pull-left">
-                            <li role="presentation"><a href="{$app_path}/pages/about">about</a></li>
+                            <li role="presentation"><a href="{$app_path}/handle/10355/59594">about</a></li>
                         </ul>
                         <ul class="nav navbar-nav  pull-left">
-                            <li role="presentation"><a href="{$app_path}/pages/help">help</a></li>
+                            <li role="presentation"><a href="{$app_path}/10355/59597">help</a></li>
                         </ul>
                         <ul class="nav navbar-nav  pull-left">
-                            <li role="presentation"><a href="{$app_path}/pages/contact">contact us</a></li>
+                            <li role="presentation"><a href="{$app_path}/10355/59595">contact us</a></li>
                         </ul>
 
 
