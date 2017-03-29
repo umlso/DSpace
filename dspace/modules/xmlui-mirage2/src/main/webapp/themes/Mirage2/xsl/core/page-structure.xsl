@@ -439,7 +439,7 @@
                             <li role="presentation"><a href="{$app_path}/discover?advancedMode">advanced search</a></li>
                         </ul>
                        <ul class="nav navbar-nav  pull-left">
-                            <li role="presentation"><a href="{$app_path}handle/10355/59596">submit works</a></li>
+                            <li role="presentation"><a href="{$app_path}/handle/10355/59596">submit works</a></li>
                         </ul>
                         <ul class="nav navbar-nav  pull-left">
                             <li role="presentation"><a href="{$app_path}/handle/10355/59594">about</a></li>
