@@ -2543,4 +2543,5 @@
 	<message key="xmlui.reporting-suite.statistics.graph-editor.data-source.dataset.option.discipline">Discipline (dc.subject.discipline)</message>
 	<message key="xmlui.reporting-suite.statistics.graph-editor.data-source.dataset.option.advisor">Advisor (dc.contributor.advisor)</message>
 	<message key="xmlui.reporting-suite.statistics.graph-editor.data-source.dataset.option.contributor">Contributor (dc.contributor.*)</message>
+	<message key="xmlui.reporting-suite.statistics.graph-editor.data-source.dataset.option.available">Date Available (dc.date.available)</message>
 </catalogue>
