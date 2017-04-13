@@ -71,6 +71,14 @@ public abstract class Record implements CommonStatFields {
         return SolrStatsDocumentUtil.getTime(sourceDocument);
     }
 
+    public String getDNS() {
+        return SolrStatsDocumentUtil.getDNS(sourceDocument);
+    }
+
+    public String getUserAgent() {
+        return SolrStatsDocumentUtil.getUserAgent(sourceDocument);
+    }
+
     public boolean needsUpdate() {
         return hasOperations;
     }

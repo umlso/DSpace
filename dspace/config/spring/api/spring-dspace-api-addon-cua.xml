@@ -99,7 +99,7 @@
         <property name="authorization" value="anonymous"/>
         <property name="navigationLabel" value="xmlui.administrative.Navigation.most-popular.author"/>
         <property name="dataProcessor">
-            <bean class="com.atmire.statistics.mostpopular.MetadataDataProcessor">
+            <bean class="com.atmire.statistics.mostpopular.MetadataDataProcessor$Discovery">
                 <property name="field" value="author"/>
             </bean>
         </property>

@@ -45,6 +45,10 @@
     <bean class="com.atmire.statistics.util.update.atomic.processor.MetadataProcessor" scope="prototype" autowire-candidate="true"/>
     <bean class="com.atmire.statistics.util.update.atomic.processor.SearchRecordProcessor" scope="prototype" autowire-candidate="true"/>
     <!--<bean class="com.atmire.statistics.util.update.atomic.processor.DebugProcessor" scope="prototype"/>-->
+    <bean class="com.atmire.statistics.util.update.atomic.processor.CountryCodeProcessor" scope="prototype" autowire-candidate="true"/>
+    <bean class="com.atmire.statistics.util.update.atomic.processor.SpiderDetectorProcessor" scope="prototype" autowire-candidate="true"/>
+    <bean class="com.atmire.statistics.util.update.atomic.processor.IsArchivedProcessor" scope="prototype" autowire-candidate="true"/>
+    <bean class="com.atmire.statistics.util.update.atomic.processor.VersioningProcessor" scope="prototype" autowire-candidate="true"/>
     <bean class="com.atmire.statistics.util.update.atomic.processor.RunVersionProcessor" scope="prototype" autowire-candidate="true"/>
     <bean class="com.atmire.statistics.util.update.atomic.processor.CountryCodeProcessor" scope="prototype" autowire-candidate="true"/>
     <bean class="com.atmire.statistics.util.update.atomic.processor.ReferrerDomainProcessor" scope="prototype" autowire-candidate="true"/>
