@@ -143,6 +143,11 @@
                 <artifactId>license-maven-plugin</artifactId>
                 <version>2.6</version>
              </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.2</version>
+                </plugin>
           </plugins>
       </pluginManagement>
 
@@ -736,6 +741,95 @@
    -->
    <dependencyManagement>
       <dependencies>
+          <!-- Atmire Modules -->
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>atmire-cua-api</artifactId>
+              <version>${cua.version.number}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>atmire-cua-xmlui-mirage2</artifactId>
+              <type>war</type>
+              <version>${cua.version.number}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>atmire-cua-xmlui-webapp</artifactId>
+              <type>war</type>
+              <version>${cua.version.number}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>atmire-cua-xmlui-api</artifactId>
+              <version>${cua.version.number}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>atmire-cua-rest-webapp</artifactId>
+              <type>war</type>
+              <version>${cua.version.number}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>atmire-cua-rest-api</artifactId>
+              <version>${cua.version.number}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>atmire-cua-common</artifactId>
+              <version>${cua.version.number}</version>
+          </dependency>
+          <dependency>
+              <groupId>it.ipzs</groupId>
+              <artifactId>fins-core</artifactId>
+              <version>5.5-1.7.4-0</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>datatables-api</artifactId>
+              <version>${datatables.version.number}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>datatables-xmlui-webapp</artifactId>
+              <type>war</type>
+              <version>${datatables.version.number}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>datatables-xmlui-api</artifactId>
+              <version>${datatables.version.number}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>atmire-datatables-common</artifactId>
+              <version>${datatables.version.number}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>modules-theme</artifactId>
+              <type>war</type>
+              <version>5.5-1.9.2-0</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>atmire-dspace-api</artifactId>
+              <version>5.5-1.15.12-0</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>atmire-dspace-xmlui</artifactId>
+              <type>war</type>
+              <version>5.5-1.15.12-0</version>
+          </dependency>
+          <dependency>
+              <groupId>com.atmire</groupId>
+              <artifactId>atmire-dspace-xmlui</artifactId>
+              <classifier>classes</classifier>
+              <version>5.5-1.15.12-0</version>
+          </dependency>
+
          <!-- DSpace core and endorsed Addons -->
          <dependency>
             <groupId>org.dspace</groupId>
@@ -747,36 +841,6 @@
             <artifactId>additions</artifactId>
             <version>5.6-SNAPSHOT</version>
          </dependency>
-          <dependency>
-              <groupId>com.atmire</groupId>
-              <artifactId>atmire-dspace-api</artifactId>
-              <version>5.5-1.15.13-0</version>
-          </dependency>
-          <dependency>
-              <groupId>com.atmire</groupId>
-              <artifactId>atmire-dspace-xmlui</artifactId>
-              <version>5.5-1.15.13-0</version>
-          </dependency>
-          <dependency>
-              <groupId>com.atmire</groupId>
-              <artifactId>datatables-api</artifactId>
-              <version>${datatables.version.number}</version>
-          </dependency>
-          <dependency>
-              <groupId>com.atmire</groupId>
-              <artifactId>datatables-xmlui-api</artifactId>
-              <version>${datatables.version.number}</version>
-          </dependency>
-          <dependency>
-              <groupId>com.atmire</groupId>
-              <artifactId>datatables-xmlui-webapp</artifactId>
-              <version>${datatables.version.number}</version>
-          </dependency>
-          <dependency>
-              <groupId>com.atmire</groupId>
-              <artifactId>atmire-datatables-common</artifactId>
-              <version>${datatables.version.number}</version>
-          </dependency>
 
          <dependency>
             <groupId>org.dspace</groupId>
@@ -989,6 +1053,16 @@
             <version>${lucene.version}</version>
          </dependency>
         <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-queries</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+          <dependency>
+              <groupId>org.apache.lucene</groupId>
+              <artifactId>lucene-sandbox</artifactId>
+              <version>${lucene.version}</version>
+          </dependency>
+          <dependency>
             <groupId>org.apache.jena</groupId>
             <artifactId>apache-jena-libs</artifactId>
             <type>pom</type>
