@@ -309,16 +309,27 @@
 
     <xsl:template name="itemSummaryView-DIM-authors-entry">
         <div>
-            <xsl:if test="@authority">
-                <xsl:attribute name="class"><xsl:text>ds-dc_contributor_author-authority</xsl:text></xsl:attribute>
-            </xsl:if>
-			<a>
-			<xsl:attribute name="href">
-				<xsl:value-of select="concat($context-path,'/browse?type=authorcontributor&amp;value=')"/>
-                <xsl:copy-of select="encoder:encode(node())"/>
-			</xsl:attribute>
-			<xsl:copy-of select="node()"/>
-			</a>
+            <xsl:choose>
+                <xsl:when test="@authority">
+                    <xsl:attribute name="class"><xsl:text>ds-dc_contributor_author-authority</xsl:text></xsl:attribute>
+                    <a>
+                        <xsl:attribute name="href">
+                            <xsl:value-of select="concat($context-path,'/browse?type=authorcontributor&amp;authority=')"/>
+                            <xsl:value-of select="@authority"/>
+                        </xsl:attribute>
+                        <xsl:copy-of select="node()"/>
+                    </a>
+                </xsl:when>
+                <xsl:otherwise>
+                    <a>
+                        <xsl:attribute name="href">
+                            <xsl:value-of select="concat($context-path,'/browse?type=authorcontributor&amp;value=')"/>
+                            <xsl:copy-of select="encoder:encode(node())"/>
+                        </xsl:attribute>
+                        <xsl:copy-of select="node()"/>
+                    </a>
+                </xsl:otherwise>
+            </xsl:choose>
         </div>
     </xsl:template>
 
