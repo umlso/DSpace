@@ -171,8 +171,7 @@
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.etal.all">All</message>
 
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.sort_by.title">Title</message>
-	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.sort_by.dateissuedasc">Date Issued (oldest first)</message>
-	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.sort_by.dateissueddesc">Date Issued (recent first)</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.sort_by.dateissued">Date Issued</message>
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.sort_by.dateaccessioned">submit date</message>
 
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.order.asc">ascending (A-Z)</message>
