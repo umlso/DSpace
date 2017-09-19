@@ -314,7 +314,7 @@
                     <xsl:attribute name="class"><xsl:text>ds-dc_contributor_author-authority</xsl:text></xsl:attribute>
                     <a>
                         <xsl:attribute name="href">
-                            <xsl:value-of select="concat($context-path,'/browse?type=authorcontributor&amp;authority=')"/>
+                            <xsl:value-of select="concat($context-path,'/browse?type=author&amp;authority=')"/>
                             <xsl:value-of select="@authority"/>
                         </xsl:attribute>
                         <xsl:copy-of select="node()"/>
@@ -323,7 +323,7 @@
                 <xsl:otherwise>
                     <a>
                         <xsl:attribute name="href">
-                            <xsl:value-of select="concat($context-path,'/browse?type=authorcontributor&amp;value=')"/>
+                            <xsl:value-of select="concat($context-path,'/browse?type=author&amp;value=')"/>
                             <xsl:copy-of select="encoder:encode(node())"/>
                         </xsl:attribute>
                         <xsl:copy-of select="node()"/>
