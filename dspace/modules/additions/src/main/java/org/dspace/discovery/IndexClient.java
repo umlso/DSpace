@@ -122,8 +122,7 @@ public class IndexClient {
         } else if(line.hasOption('s')) {
             checkRebuildSpellCheck(line, indexer);
         } else {
-            log.info("Updating and Cleaning Index");
-            indexer.cleanIndex(line.hasOption("f"));
+            log.info("Updating Index");
             indexer.updateIndex(context, line.hasOption("f"));
             checkRebuildSpellCheck(line, indexer);
         }
