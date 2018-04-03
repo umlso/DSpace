@@ -183,6 +183,7 @@
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.discipline.column_heading">Thesis Department</message>
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.semester.column_heading">Thesis Semester</message>
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.advisor.column_heading">Thesis Advisor</message>
+
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.authorcontributor.column_heading">Author/Contributor</message>
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.identifier.column_heading">Identifier</message>
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.column_heading">Title</message>
