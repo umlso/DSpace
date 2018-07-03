@@ -19,6 +19,8 @@ import org.dspace.authority.AuthorityValue;
  */
 public interface AuthorityIndexingService {
 
+    public void updateIndex(String authId, String authValue);
+
     public void indexContent(AuthorityValue value, boolean force);
 
     public void cleanIndex() throws Exception;

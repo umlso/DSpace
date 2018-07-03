@@ -13,6 +13,8 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocument;
+import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrInputDocument;
 import org.dspace.authority.indexer.AuthorityIndexingService;
 import org.dspace.core.ConfigurationManager;
@@ -55,6 +57,26 @@ public class AuthoritySolrServiceImpl implements AuthorityIndexingService, Autho
         }
 
         return solr;
+    }
+
+    public void updateIndex(String authId, String authValue) {
+        try {
+            SolrDocumentList authResults = search(new SolrQuery("id:" + authId)).getResults();
+            if (!authResults.isEmpty()) {
+                SolrDocument doc = authResults.get(0);
+                doc.remove("value");
+                doc.addField("value", authValue);
+                SolrInputDocument inputDoc = new SolrInputDocument();
+                for (String fieldName : doc.getFieldNames()) {
+                    inputDoc.addField(fieldName, doc.get(fieldName));
+                }
+                solr.deleteByQuery("id:" + authId);
+                solr.add(inputDoc);
+                solr.commit();
+            }
+        } catch (Exception e) {
+            log.error("Error while updating authority record " + authId + " with new value: " + authValue, e);
+        }
     }
 
     public void indexContent(AuthorityValue value, boolean force) {

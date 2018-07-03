@@ -9,6 +9,8 @@ package org.dspace.app.xmlui.aspect.administrative.item;
 
 import org.apache.cocoon.environment.ObjectModelHelper;
 import org.apache.cocoon.environment.Request;
+import org.apache.log4j.Logger;
+import org.apache.solr.client.solrj.SolrQuery;
 import org.dspace.app.xmlui.cocoon.AbstractDSpaceTransformer;
 import org.dspace.app.xmlui.wing.Message;
 import org.dspace.app.xmlui.wing.WingException;
@@ -18,6 +20,9 @@ import org.dspace.content.Item;
 import org.dspace.content.authority.ChoiceAuthorityManager;
 import org.dspace.content.authority.Choices;
 import org.dspace.content.authority.MetadataAuthorityManager;
+import org.dspace.content.authority.SolrAuthority;
+import org.dspace.discovery.DiscoverQuery;
+import org.dspace.discovery.SearchUtils;
 
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -33,6 +38,8 @@ import java.util.Comparator;
  */
 
 public class EditItemMetadataForm extends AbstractDSpaceTransformer {
+
+    private static Logger log = Logger.getLogger(EditItemMetadataForm.class);
 
     /** Language strings */
     private static final Message T_dspace_home = message("xmlui.general.dspace_home");
@@ -234,6 +241,23 @@ public class EditItemMetadataForm extends AbstractDSpaceTransformer {
                     // add the "unlock" button to auth field
                     Button unlock = authValue.addButton("authority_unlock_" + index, "ds-authority-lock");
                     unlock.setHelp(T_unlock);
+                    // Add authority core value
+                    String realAuthValue = "";
+                    long numberOfAuthItems = -1;
+                    try {
+                        SolrQuery authQuery = new SolrQuery("id:" + value.authority);
+                        realAuthValue = (String) SolrAuthority.getSearchService().search(authQuery).getResults().get(0).get("value");
+                        DiscoverQuery authCountQuery = new DiscoverQuery();
+                        authCountQuery.setQuery("author_authority:" + value.authority);
+                        numberOfAuthItems = SearchUtils.getSearchService().search(context, authCountQuery).getTotalSearchResults();
+                    } catch (Exception e) {
+                        log.error(e);
+                    }
+                    String authValueTitle = "Authority Value" + (numberOfAuthItems > 0 ? " (" + numberOfAuthItems + " matching items)" : "");
+                    mdCell.addContent(authValueTitle);
+                    TextArea auValue = mdCell.addTextArea("auth_value_" + index);
+                    auValue.setSize(4, 35);
+                    auValue.setValue(realAuthValue);
                 }
                 if (ChoiceAuthorityManager.getManager().isChoicesConfigured(fieldKey)) {
                     mdValue.setChoices(fieldKey);

@@ -13,6 +13,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.dspace.app.util.Util;
 import org.dspace.app.xmlui.utils.UIException;
 import org.dspace.app.xmlui.wing.Message;
+import org.dspace.authority.indexer.AuthorityIndexingService;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.authorize.AuthorizeManager;
 import org.dspace.content.*;
@@ -22,6 +23,7 @@ import org.dspace.core.Constants;
 import org.dspace.core.Context;
 import org.dspace.curate.Curator;
 import org.dspace.handle.HandleManager;
+import org.dspace.utils.DSpace;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -190,6 +192,12 @@ public class FlowItemUtils {
             // upgrade to a minimum of NOVALUE if there IS an authority key
             if (authority != null && authority.length() > 0 && iconf == Choices.CF_UNSET) {
                 iconf = Choices.CF_NOVALUE;
+            }
+
+            String realAuthValue = request.getParameter("auth_value_" + index);
+            if (authority != null && authority.length() > 0 && realAuthValue != null) {
+                AuthorityIndexingService indexingService = new DSpace().getServiceManager().getServiceByName(AuthorityIndexingService.class.getName(),AuthorityIndexingService.class);
+                indexingService.updateIndex(authority, realAuthValue);
             }
             item.addMetadata(parts[0], parts[1], parts[2], lang,
                     value, authority, iconf);
