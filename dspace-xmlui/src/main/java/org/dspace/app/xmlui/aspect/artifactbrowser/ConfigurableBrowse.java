@@ -66,8 +66,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Graham Triggs
  */
-public class ConfigurableBrowse extends AbstractDSpaceTransformer implements
-        CacheableProcessingComponent
+public class ConfigurableBrowse extends AbstractDSpaceTransformer
 {
     private static final Logger log = Logger.getLogger(ConfigurableBrowse.class);
 
