@@ -151,11 +151,11 @@ public class DSpaceMETSIngester
         }
         else
         {
-            // otherwise take the first.  Don't xwalk more than one because
-            // each xwalk _adds_ metadata, and could add duplicate fields.
             if (dmds.length > 0)
             {
-                manifest.crosswalkItemDmd(context, params, dso, dmds[0], callback);
+                for(int i = 0; i < dmds.length ; i++) {
+                    manifest.crosswalkItemDmd(context, params, dso, dmds[i], callback);
+                }
             }
         }
     }

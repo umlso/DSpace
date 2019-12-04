@@ -87,8 +87,8 @@
     			<xsl:value-of select="epdcx:valueString"/>
     		</dim:field>
     	</xsl:if>
-    	
-    	<!-- identifier element: dc.identifier.* -->
+
+		<!-- identifier element: dc.identifier.* -->
     	<xsl:if test="./@epdcx:propertyURI='http://purl.org/dc/elements/1.1/identifier'">
     		<xsl:element name="dim:field">
     			<xsl:attribute name="mdschema">dc</xsl:attribute>
