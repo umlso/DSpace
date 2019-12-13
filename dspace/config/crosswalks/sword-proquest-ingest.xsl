@@ -26,7 +26,7 @@
                 <xsl:for-each select="./s:DISS_description/s:DISS_advisor/s:DISS_name">
                     <dim:field mdschema="dc" element="contributor" qualifier="advisor">
                         <xsl:value-of select="./s:DISS_surname"/>
-                        <xsl:text>,</xsl:text>
+                        <xsl:text>, </xsl:text>
                         <xsl:value-of select="./s:DISS_fname"/>
                     </dim:field>
                 </xsl:for-each>
