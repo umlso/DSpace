@@ -13,6 +13,7 @@ import org.dspace.content.Bundle;
 import org.dspace.content.Collection;
 import org.dspace.content.DSpaceObject;
 import org.dspace.content.Item;
+import org.dspace.content.packager.METSManifest;
 import org.dspace.core.Context;
 import org.dspace.core.ConfigurationManager;
 import org.dspace.authorize.AuthorizeException;
@@ -25,7 +26,10 @@ import org.apache.log4j.Logger;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 /**
  * @author Richard Jones
@@ -144,12 +148,12 @@ public class CollectionDepositor extends Depositor
 
 				String fn = swordService.getFilename(context, deposit, true);
 
-                Bitstream bitstream;
+				Bitstream packageBitstream, metsBitstream;
 				FileInputStream fis = null;
                 try
                 {
                     fis = new FileInputStream(deposit.getFile());
-                    bitstream = swordBundle.createBitstream(fis);
+					packageBitstream = swordBundle.createBitstream(fis);
                 }
                 finally
                 {
@@ -158,18 +162,45 @@ public class CollectionDepositor extends Depositor
                         fis.close();
                     }
                 }
+				packageBitstream.setName(fn);
+				packageBitstream.setDescription("Original file deposited via SWORD");
 
-                bitstream.setName(fn);
-                bitstream.setDescription("SWORD deposit package");
+				InputStream zis = null;
+				try {
+					ZipFile zip = new ZipFile(deposit.getFile());
+
+					// Retrieve the manifest file entry (named mets.xml)
+					ZipEntry manifestEntry = zip.getEntry(METSManifest.MANIFEST_FILE);
+
+					// parse the manifest and sanity-check it.
+					zis = zip.getInputStream(manifestEntry);
+					metsBitstream = swordBundle.createBitstream(zis);
+
+					// close the Zip file for now
+					// (we'll extract the other files from zip when we need them)
+					zip.close();
+				}
+				finally {
+					if (zis != null) {
+						zis.close();
+					}
+				}
+				metsBitstream.setName("mets.xml");
+				metsBitstream.setDescription("Original mets.xml deposited via SWORD");
 
                 BitstreamFormat bf = BitstreamFormat.findByMIMEType(context, deposit.getContentType());
                 if (bf != null)
                 {
-                    bitstream.setFormat(bf);
+					packageBitstream.setFormat(bf);
                 }
+				bf = BitstreamFormat.findByMIMEType(context, "text/xml");
+				if (bf != null)
+				{
+					metsBitstream.setFormat(bf);
+				}
 
-                bitstream.update();
-
+				packageBitstream.update();
+				metsBitstream.update();
                 swordBundle.update();
                 item.update();
 
@@ -179,7 +210,7 @@ public class CollectionDepositor extends Depositor
 				context.setIgnoreAuthorization(ignoreAuth);
 
 				// set the media link for the created item
-				result.setMediaLink(urlManager.getMediaLink(bitstream));
+				result.setMediaLink(urlManager.getMediaLink(packageBitstream));
 			}
 			else
 			{
