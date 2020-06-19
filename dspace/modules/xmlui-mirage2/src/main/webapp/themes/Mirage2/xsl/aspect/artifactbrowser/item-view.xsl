@@ -112,7 +112,14 @@
                     <!-- small column to the left, for short metadata -->
                     <div class="row">
                        <div class="col-xs-6 col-sm-12">
-                            <xsl:call-template name="itemSummaryView-DIM-file-section"/>
+                           <xsl:choose>
+                               <xsl:when test="$document/dri:meta/dri:pageMeta/dri:metadata[@element='htmlprimary']">
+                                   <xsl:call-template name="itemSummaryView-DIM-html-file-section"/>
+                               </xsl:when>
+                               <xsl:otherwise>
+                                   <xsl:call-template name="itemSummaryView-DIM-file-section"/>
+                               </xsl:otherwise>
+                           </xsl:choose>
                         </div>
                     </div>
                     <xsl:call-template name="itemSummaryView-DIM-date"/>
@@ -590,6 +597,56 @@
                 <xsl:apply-templates select="$document//dri:referenceSet[@id='aspect.artifactbrowser.ItemViewer.referenceSet.collection-viewer']/dri:reference"/>
             </div>
         </xsl:if>
+    </xsl:template>
+
+    <xsl:template name="itemSummaryView-DIM-html-file-section">
+        <xsl:choose>
+            <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file">
+                <div class="item-page-field-wrapper table">
+                    <h5>
+                        <i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-viewOpen</i18n:text>
+                    </h5>
+
+                    <xsl:variable name="label-1">
+                        <xsl:choose>
+                            <xsl:when test="confman:getProperty('mirage2.item-view.bitstream.href.label.1')">
+                                <xsl:value-of select="confman:getProperty('mirage2.item-view.bitstream.href.label.1')"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:text>label</xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:variable>
+
+                    <xsl:variable name="label-2">
+                        <xsl:choose>
+                            <xsl:when test="confman:getProperty('mirage2.item-view.bitstream.href.label.2')">
+                                <xsl:value-of select="confman:getProperty('mirage2.item-view.bitstream.href.label.2')"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:text>title</xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:variable>
+
+                    <xsl:for-each select="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file[1]">
+                        <xsl:call-template name="itemSummaryView-DIM-file-section-entry">
+                            <xsl:with-param name="href" select="mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
+                            <xsl:with-param name="mimetype" select="@MIMETYPE" />
+                            <xsl:with-param name="label-1" select="$label-1" />
+                            <xsl:with-param name="label-2" select="$label-2" />
+                            <xsl:with-param name="title" select="mets:FLocat[@LOCTYPE='URL']/@xlink:title" />
+                            <xsl:with-param name="label" select="mets:FLocat[@LOCTYPE='URL']/@xlink:label" />
+                            <xsl:with-param name="size" select="@SIZE" />
+                        </xsl:call-template>
+                    </xsl:for-each>
+                </div>
+            </xsl:when>
+            <!-- Special case for handling ORE resource maps stored as DSpace bitstreams -->
+            <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='ORE']">
+                <xsl:apply-templates select="//mets:fileSec/mets:fileGrp[@USE='ORE']" mode="itemSummaryView-DIM" />
+            </xsl:when>
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-file-section">

@@ -37,10 +37,7 @@ import org.dspace.app.xmlui.wing.element.ReferenceSet;
 import org.dspace.app.xmlui.wing.element.PageMeta;
 import org.dspace.app.xmlui.wing.element.Para;
 import org.dspace.authorize.AuthorizeException;
-import org.dspace.content.Collection;
-import org.dspace.content.Metadatum;
-import org.dspace.content.DSpaceObject;
-import org.dspace.content.Item;
+import org.dspace.content.*;
 import org.dspace.app.util.GoogleMetadata;
 import org.dspace.content.crosswalk.CrosswalkException;
 import org.dspace.content.crosswalk.DisseminationCrosswalk;
@@ -52,7 +49,6 @@ import org.xml.sax.SAXException;
 import org.dspace.core.ConfigurationManager;
 import org.dspace.app.sfx.SFXFileReader;
 import org.dspace.app.xmlui.wing.element.Metadata;
-import org.dspace.content.MetadataSchema;
 import org.dspace.identifier.IdentifierNotFoundException;
 import org.dspace.identifier.IdentifierNotResolvableException;
 import org.dspace.identifier.IdentifierProvider;
@@ -269,6 +265,14 @@ public class ItemViewer extends AbstractDSpaceTransformer implements CacheablePr
         if (sfxserverImg != null && sfxserverImg.length() > 0)
         {
             pageMeta.addMetadata("sfx","image_url").addContent(sfxserverImg);
+        }
+
+        Bitstream primaryBitstream = null;
+        for (Bundle bundle : item.getBundles("ORIGINAL")) {
+            primaryBitstream = Bitstream.find(context, bundle.getPrimaryBitstreamID());
+        }
+        if (primaryBitstream != null && primaryBitstream.getName().toLowerCase().endsWith(".html")) {
+            pageMeta.addMetadata("htmlprimary");
         }
 
         boolean googleEnabled = ConfigurationManager.getBooleanProperty(
